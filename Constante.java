@@ -1,5 +1,5 @@
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
+/*test*/
 public class Constante {
     public int entier;
 
