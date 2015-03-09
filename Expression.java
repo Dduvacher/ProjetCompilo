@@ -4,9 +4,9 @@ import java.util.Stack;
 
 
 public class Expression {
-    public Stack<char> pileOp ;
+    public Stack<Character> pileOp ;
 
-    public Stack<char> pileType;
+    public Stack<Character> pileType;
 
     public void OppAdd(String op, String i, String j) {
     }
