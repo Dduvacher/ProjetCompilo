@@ -1,7 +1,12 @@
-public class Expression {
-    public String pileOp;
+import java.util.Stack;
 
-    public String pileType;
+//import com.modeliosoft.modelio.javadesigner.annotations.objid;
+
+
+public class Expression {
+    public Stack<char> pileOp ;
+
+    public Stack<char> pileType;
 
     public void OppAdd(String op, String i, String j) {
     }
@@ -22,9 +27,11 @@ public class Expression {
     }
 
     public String depileOp() {
+    	return "tasoeur";
     }
 
     public String depileType() {
+    	return "tasoeur";
     }
 
 }

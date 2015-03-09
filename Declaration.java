@@ -1,3 +1,5 @@
+//import com.modeliosoft.modelio.javadesigner.annotations.objid;
+
 public class Declaration {
     public String identLu;
 

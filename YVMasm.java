@@ -1,3 +1,5 @@
+//import com.modeliosoft.modelio.javadesigner.annotations.objid;
+
 public class YVMasm extends YVM {
     public void iload(int i) {
     }
@@ -5,7 +7,7 @@ public class YVMasm extends YVM {
     public void ouvrePrinc(int i) {
     }
 
-    public void goto(String eti) {
+    public void goTo(String eti) {
     }
 
     public void ifeq(String eti) {

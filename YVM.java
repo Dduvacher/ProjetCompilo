@@ -1,3 +1,5 @@
+//import com.modeliosoft.modelio.javadesigner.annotations.objid;
+
 public class YVM {
     private String OutPutStream;
 
@@ -24,7 +26,7 @@ public class YVM {
     public void ifeq(String eti) {
     }
 
-    public void goto(String eti) {
+    public void goTo(String eti) {
     }
 
     public void ouvrePrinc(int i) {
