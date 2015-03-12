@@ -2,7 +2,11 @@
 
 public class IdVar extends Ident {
     private int offset;
-
+    
+    public IdVar(String type, int offset){
+    	super(type);
+    	this.offset = offset;
+    }
 
     public boolean estVariable() {
     	return true;

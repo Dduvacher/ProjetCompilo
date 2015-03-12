@@ -2,7 +2,12 @@
 
 public class IdConst extends Ident {
     private int valeur;
-
+    
+    public IdConst(String type, int valeur){
+    	super(type);
+    	this.valeur = valeur;
+    }
+    
     public boolean estVariable() {
     	return false;
     }
