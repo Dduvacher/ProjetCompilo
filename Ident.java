@@ -3,13 +3,12 @@
 public abstract class Ident {
     private String Type;
 
-    public TabIdent tabIdent;
+    //public TabIdent tabIdent; ???
 
-    public boolean Equals(Ident id) {
-    	return false;
-    }
+    public abstract boolean equals(Ident id);
 
-    public void estVariable() {
-    }
+    public abstract boolean estVariable();
+    
+    public abstract int getValeur();
 
 }
