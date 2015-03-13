@@ -12,6 +12,24 @@ public class YVMasm extends YVM {
 		super(fileName);
 	}
 	
+    //entete et queue
+    public void entete(){
+    	p.println("; entete");
+    	p.println(".model SMALL");
+    	p.println(".586");
+    	
+    	p.println(".CODE");
+    	p.println("debut :");
+    	p.println("STARTUPCODE");
+    }
+    
+    public void queue(){
+    	p.println("; queue");
+    	p.println("nop");
+    	p.println("exitcode");
+    	p.println("end debut");
+    }
+	
 	//instructions arithmétiques
     public void iadd() {
     	p.println("; iadd");
