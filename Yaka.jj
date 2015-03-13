@@ -234,40 +234,40 @@ void primaire (): {}
 }
 
 void valeur () : {}
-{ <entier> {Expression.empileType('e');}
+{ <entier> {exp.empileType('e');}
  | <ident> 
- | <VRAI>  {Expression.empileType('b');}
- | <FAUX>  {Expression.empileType('b');}
+ | <VRAI>  {exp.empileType('b');}
+ | <FAUX>  {exp.empileType('b');}
  
 }
 
 void opRel() : {}
 {
-   "=" {Expression.empileOp('=');}
- | "<>"{Expression.empileOp('d');}
- | "<" {Expression.empileOp('<');}
- | "<="{Expression.empileOp('i');}	
- | ">" {Expression.empileOp('>');}		
- | ">="{Expression.empileOp('s');}	
+   "=" {exp.empileOp('=');}
+ | "<>"{exp.empileOp('d');}
+ | "<" {exp.empileOp('<');}
+ | "<="{exp.empileOp('i');}	
+ | ">" {exp.empileOp('>');}		
+ | ">="{exp.empileOp('s');}	
 } 
 
 void opAdd() : {}
 {
-    "+"	{Expression.empileOp('+');}
-  |  "-" {Expression.empileOp('-');}  
-  | <OU> {Expression.empileOp('o');}
+    "+"	{exp.empileOp('+');}
+  |  "-" {exp.empileOp('-');}  
+  | <OU> {exp.empileOp('o');}
 }
 
 void opMul() : {}
 {
-  "*" {Expression.empileOp('*');}		
-  | "/"	{Expression.empileOp('/');}
-  | <ET> {Expression.empileOp('a');}
+  "*" {exp.empileOp('*');}		
+  | "/"	{exp.empileOp('/');}
+  | <ET> {exp.empileOp('a');}
 } 
 
 void opNeg() : {}
-{ "-"	{Expression.empileOp('-');}	
- | <NON> {Expression.empileOp('n');}	
+{ "-"	{exp.empileOp('-');}	
+ | <NON> {exp.empileOp('n');}	
 }
 
 

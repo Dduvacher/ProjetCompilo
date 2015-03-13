@@ -303,18 +303,18 @@ public class Yaka implements YakaConstants {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case entier:
       jj_consume_token(entier);
-            Expression.empileType('e');
+            exp.empileType('e');
       break;
     case ident:
       jj_consume_token(ident);
       break;
     case VRAI:
       jj_consume_token(VRAI);
-            Expression.empileType('b');
+            exp.empileType('b');
       break;
     case FAUX:
       jj_consume_token(FAUX);
-            Expression.empileType('b');
+            exp.empileType('b');
       break;
     default:
       jj_la1[14] = jj_gen;
@@ -327,27 +327,27 @@ public class Yaka implements YakaConstants {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case 42:
       jj_consume_token(42);
-        Expression.empileOp('=');
+        exp.empileOp('=');
       break;
     case 45:
       jj_consume_token(45);
-        Expression.empileOp('d');
+        exp.empileOp('d');
       break;
     case 46:
       jj_consume_token(46);
-        Expression.empileOp('<');
+        exp.empileOp('<');
       break;
     case 47:
       jj_consume_token(47);
-        Expression.empileOp('i');
+        exp.empileOp('i');
       break;
     case 48:
       jj_consume_token(48);
-        Expression.empileOp('>');
+        exp.empileOp('>');
       break;
     case 49:
       jj_consume_token(49);
-        Expression.empileOp('s');
+        exp.empileOp('s');
       break;
     default:
       jj_la1[15] = jj_gen;
@@ -360,15 +360,15 @@ public class Yaka implements YakaConstants {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case 50:
       jj_consume_token(50);
-         Expression.empileOp('+');
+         exp.empileOp('+');
       break;
     case 51:
       jj_consume_token(51);
-          Expression.empileOp('-');
+          exp.empileOp('-');
       break;
     case OU:
       jj_consume_token(OU);
-          Expression.empileOp('o');
+          exp.empileOp('o');
       break;
     default:
       jj_la1[16] = jj_gen;
@@ -381,15 +381,15 @@ public class Yaka implements YakaConstants {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case 52:
       jj_consume_token(52);
-       Expression.empileOp('*');
+       exp.empileOp('*');
       break;
     case 53:
       jj_consume_token(53);
-         Expression.empileOp('/');
+         exp.empileOp('/');
       break;
     case ET:
       jj_consume_token(ET);
-          Expression.empileOp('a');
+          exp.empileOp('a');
       break;
     default:
       jj_la1[17] = jj_gen;
@@ -402,11 +402,11 @@ public class Yaka implements YakaConstants {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case 51:
       jj_consume_token(51);
-         Expression.empileOp('-');
+         exp.empileOp('-');
       break;
     case NON:
       jj_consume_token(NON);
-          Expression.empileOp('n');
+          exp.empileOp('n');
       break;
     default:
       jj_la1[18] = jj_gen;
