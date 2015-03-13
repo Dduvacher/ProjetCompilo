@@ -21,6 +21,7 @@ public class Yaka {
  static YVM fichYVM = new YVM("Fichier YVM");
  static YVMasm fichYVMasm = new YVMasm("Fichier YVMasm");
  static Expression exp = new Expression(fichYVM,fichYVMasm);
+ static TabIdent tab = new TabIdent();
 
   public static void main(String args[]) { 
     Yaka analyseur;
@@ -235,7 +236,7 @@ void primaire (): {}
 
 void valeur () : {}
 { <entier> {exp.empileType('e');}
- | <ident> 
+ | <ident> {exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getType());}
  | <VRAI>  {exp.empileType('b');}
  | <FAUX>  {exp.empileType('b');}
  

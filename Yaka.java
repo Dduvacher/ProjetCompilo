@@ -3,6 +3,7 @@ public class Yaka implements YakaConstants {
  static YVM fichYVM = new YVM("Fichier YVM");
  static YVMasm fichYVMasm = new YVMasm("Fichier YVMasm");
  static Expression exp = new Expression(fichYVM,fichYVMasm);
+ static TabIdent tab = new TabIdent();
 
   public static void main(String args[]) {
     Yaka analyseur;
@@ -307,6 +308,7 @@ public class Yaka implements YakaConstants {
       break;
     case ident:
       jj_consume_token(ident);
+            exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getType());
       break;
     case VRAI:
       jj_consume_token(VRAI);
