@@ -8,8 +8,8 @@ public class TabIdent {
 
     public Yaka yaka;
 
-    public TabIdent(int taille) {
-    	this.table = new HashMap<String, Ident>(taille);
+    public TabIdent() {
+    	this.table = new HashMap<String, Ident>();
     }
 
     public Ident chercheIdent(String clef) {
