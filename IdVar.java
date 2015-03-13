@@ -1,9 +1,9 @@
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
-public class IdVar extends Ident {
+public class IdVar extends Ident implements Constante {
     private int offset;
     
-    public IdVar(String type, int offset){
+    public IdVar(type type, int offset){
     	super(type);
     	this.offset = offset;
     }
