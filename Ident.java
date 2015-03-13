@@ -1,11 +1,11 @@
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 public abstract class Ident {
-    private String type;
+    private Constante.type type;
 
     //public TabIdent tabIdent; ???
     
-    public Ident(String type){
+    public Ident(Constante.type type){
     	this.type = type;
     }
 
@@ -15,8 +15,13 @@ public abstract class Ident {
     
     public abstract int getValeur();
     
-    public String getType(){
-    	return this.type;
+    public char getType(){
+    	switch(this.type){
+    	case BOOL: return 'b';
+    	case ENTIER: return 'e';
+    	case ERREUR: return 'r';
+    	default: return 'r';
+    	}
     }
 
 }
