@@ -18,7 +18,9 @@ PARSER_BEGIN(Yaka)
 
 
 public class Yaka {
-
+ static YVM fichYVM = new YVM("Fichier YVM");
+ static YVMasm fichYVMasm = new YVMasm("Fichier YVMasm");
+ static Expression exp = new Expression(fichYVM,fichYVMasm);
 
   public static void main(String args[]) { 
     Yaka analyseur;
@@ -233,7 +235,7 @@ void primaire (): {}
 
 void valeur () : {}
 { <entier> {Expression.empileType('e');}
- | <ident> {Expression.empileType('d');}
+ | <ident> 
  | <VRAI>  {Expression.empileType('b');}
  | <FAUX>  {Expression.empileType('b');}
  
@@ -253,7 +255,7 @@ void opAdd() : {}
 {
     "+"	{Expression.empileOp('+');}
   |  "-" {Expression.empileOp('-');}  
-  | <OU> {Expression.empileOp('o'):}
+  | <OU> {Expression.empileOp('o');}
 }
 
 void opMul() : {}
