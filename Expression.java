@@ -195,8 +195,18 @@ public class Expression implements Constante{
     	this.pileOp.push(op);
     }
 
-    public void empileType(type type) {
-    	this.pileType.push(type);
+    public void empileType(char t) {
+    	switch(t){
+    		case 'b':
+    			this.pileType.push(type.BOOL);
+    			break;
+    		case 'e':
+    			this.pileType.push(type.ENTIER);
+    			break;
+    		case 'r':
+    			this.pileType.push(type.ERREUR);
+    			break;
+    	}
     }
 
 }
