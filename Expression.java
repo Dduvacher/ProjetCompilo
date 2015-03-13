@@ -13,7 +13,17 @@ public class Expression implements Constante{
     	this.yvm = yvm;
     	this.yvmAsm = yvmAsm;
     }
-
+    
+    public void entete(){
+    	this.yvm.entete();
+    	this.yvmAsm.entete();
+    }
+    
+    public void queue(){
+    	this.yvm.queue();
+    	this.yvmAsm.queue();
+    }
+    
     public void OppAdd() {
     	type y = this.pileType.pop();
     	type x = this.pileType.pop(); 

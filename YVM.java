@@ -17,6 +17,15 @@ public class YVM {
 		}
     }
     
+    //entete et queue
+    public void entete(){
+    	p.println("entete");
+    }
+    
+    public void queue(){
+    	p.println("queue");
+    }
+    
     //instructions arithmétiques
     public void iadd() {
     	p.println("iadd");
