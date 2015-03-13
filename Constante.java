@@ -1,6 +1,6 @@
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 /*test*/
-public class Constante {
+public interface Constante {
     
     enum type {BOOL, ENTIER, ERREUR};
 
