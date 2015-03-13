@@ -1,11 +1,11 @@
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
-public abstract class Ident {
-    private Constante.type type;
+public abstract class Ident implements Constante{
+    private type type;
 
     //public TabIdent tabIdent; ???
     
-    public Ident(Constante.type type){
+    public Ident(type type){
     	this.type = type;
     }
 
