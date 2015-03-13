@@ -5,7 +5,6 @@ public class Declaration implements Constante {
     public String typeLu;
     public YVM yvm;
     public YVMasm asm;
-    //tasoeur
     public Declaration (YVM yvm, YVMasm asm){
     	this.yvm = yvm;
     	this.asm = asm;
