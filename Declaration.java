@@ -2,7 +2,7 @@
 
 public class Declaration implements Constante {
     public String identLu;
-    public String typeLu;
+    public type typeLu;
     public YVM yvm;
     public YVMasm asm;
     public Declaration (YVM yvm, YVMasm asm){

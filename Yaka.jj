@@ -22,6 +22,7 @@ public class Yaka {
  static YVMasm fichYVMasm = new YVMasm("Fichier YVMasm");
  static Expression exp = new Expression(fichYVM,fichYVMasm);
  static TabIdent tab = new TabIdent();
+ static Declaration dec = new Declaration(fichYVM, fichYVMasm);
 
   public static void main(String args[]) { 
     Yaka analyseur;
@@ -159,33 +160,33 @@ void declConst() : {}
 void defConst() : {}
 {
 	
-  <ident>  	  	
+  <ident> {dec.identLu=YakaTokenManager.identLu;} 	
    "=" valConst()
     
 }
 
 void valConst() : {}{
-  <entier> 		
- | <ident>		
- | <VRAI> 		
- | <FAUX> 		
+  <entier> {dec.placerConst(dec.identLu,YakaTokenManager.entierLu,type.ENTIER,tab);}
+ | <ident>	{dec.placerConst(dec.identLu,YakaTokenManager.identLu,tab.chercheIdent(YakaTokenManager.identLu).getType(),tab);}	
+ | <VRAI> 	{dec.placerConst(dec.identLu,YakaTokenManager.identLu,type.BOOL,tab);}	
+ | <FAUX> 	{dec.placerConst(dec.identLu,YakaTokenManager.identLu,type.BOOL,tab);}	
 }
 
 
 void declVar() : {}
 {
   <VAR> type()	
-  <ident>		
+  <ident> {/*dec.placerVariable(YakaTokenManager.identLu,...,dec.typeLu,tab);*/}	
   ("," 
-      <ident>  
+      <ident> {/*dec.placerVariable(YakaTokenManager.identLu,...,dec.typeLu,tab);*/} 
   )* ";"
 	
 }
 
 void type() :{}
 {
-   <ENTIER> 			
- | <BOOLEEN>	
+   <ENTIER> {dec.typeLu=type.ENTIER;}		
+ | <BOOLEEN> {dec.typeLu=type.BOOL;}	
 }
 /*
  * Syntaxe des instructions.
@@ -202,7 +203,7 @@ void expression() : {}
 {
   simpleExpr() 
   (opRel() 
-  simpleExpr() 
+  simpleExpr() {exp.OppRel();}
   )?
 }
 
@@ -211,20 +212,20 @@ void expression() : {}
 void simpleExpr() : {}
 {
    terme() 
-   (opAdd() 
-   terme()	
+   (opAdd()
+   terme()  {exp.OppAdd();}
    )*
 } 
 void terme() : {}
 {
   facteur() 
-  (opMul() 
-  facteur()	
+  (opMul()
+  facteur()	{exp.OppMul();}
   )*
 }
 void facteur() : {}
 {   primaire() 
-  |  opNeg() primaire() 
+  |  (opNeg() primaire()) {exp.OppNeg();} 
 }
 
 void primaire (): {}
