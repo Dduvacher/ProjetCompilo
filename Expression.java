@@ -226,10 +226,14 @@ public class Expression implements Constante{
     	if(t == null)
     		System.out.println("ERREUR : utilisation d'un ident non déclaré");
     	else{
-    		if(t.estVariable())
+    		if(t.estVariable()){
     			this.yvm.iload(t.getValeur());
-    		else
+    			this.yvmAsm.iload(t.getValeur());
+    		}
+    		else {
     			this.yvm.iconst(t.getValeur());
+    			this.yvmAsm.iconst(t.getValeur());
+    		}
     	}
     		
     }
