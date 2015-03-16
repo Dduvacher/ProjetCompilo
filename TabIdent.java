@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 public class TabIdent {
     private HashMap<String, Ident> table;
+    public int iterateur=-2;
 
     public Yaka yaka;
 
@@ -22,6 +23,9 @@ public class TabIdent {
 
     public void rangeIdent(String clef, Ident id) {
     	this.table.put(clef, id);
+    	if(id.estVariable()){
+    		iterateur-=2;
+    	}
     }
     
     public String toString(){

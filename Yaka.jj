@@ -176,9 +176,9 @@ void valConst() : {}{
 void declVar() : {}
 {
   <VAR> type()	
-  <ident> {/*dec.placerVariable(YakaTokenManager.identLu,...,dec.typeLu,tab);*/}	
+  <ident> {dec.placerVariable(YakaTokenManager.identLu,tab.iterateur,dec.typeLu,tab);}	
   ("," 
-      <ident> {/*dec.placerVariable(YakaTokenManager.identLu,...,dec.typeLu,tab);*/} 
+      <ident> {dec.placerVariable(YakaTokenManager.identLu,tab.iterateur,dec.typeLu,tab);} 
   )* ";"
 	
 }
