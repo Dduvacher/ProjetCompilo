@@ -25,7 +25,7 @@ public class YVM {
     }
     
     public void ouvrePrinc(){
-    	p.println("ouvrePrinc " + this.tab.getIterateur()*-1);
+    	p.println("ouvrePrinc " + (this.tab.getIterateur()+2)*-1);
     }
     
     public void queue(){
