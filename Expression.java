@@ -220,5 +220,17 @@ public class Expression implements Constante{
     			break;
     	}
     }
+    
+    public void ecrireIdent(Ident t){
+    	
+    }
+    
+    public void ecrireEntier(int t){
+    	
+    }
+
+    public void ecrireBool(bool t){
+	
+}
 
 }
