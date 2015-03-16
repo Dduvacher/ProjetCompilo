@@ -15,7 +15,7 @@ public class Declaration implements Constante {
     		System.out.println("ERROR : IDENT ALREADY EXISTS");
     	} else {
     		tab.rangeIdent(nom, new IdVar(type, val));
-    		yvm.istore(val);
+    		yvm.istore(val); asm.istore(val);
     	}
     }
 
@@ -24,7 +24,7 @@ public class Declaration implements Constante {
     		System.out.println("ERROR : IDENT ALREADY EXISTS");
     	} else {
     		tab.rangeIdent(nom, new IdConst(type, val));
-    		yvm.iconst(val);
+    		yvm.iconst(val); asm.iconst(val);
     		
     	}
     }
