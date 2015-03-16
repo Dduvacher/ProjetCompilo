@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
@@ -10,6 +12,11 @@ public class YVMasm extends YVM {
 	//contructeur qui prend en param le nom du fichier dans lequel écrire les instrucions YVM
 	public YVMasm(String fileName){
 		super(fileName);
+		try {
+			this.p = new PrintWriter(new FileOutputStream(fileName));
+		}catch (FileNotFoundException e) {
+			System.out.println("erreur: ouverture du fichier " + fileName);
+		}
 	}
 	
     //entete et queue

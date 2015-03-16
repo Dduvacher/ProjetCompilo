@@ -12,6 +12,8 @@ public class Expression implements Constante{
     public Expression(YVM yvm, YVMasm yvmAsm){
     	this.yvm = yvm;
     	this.yvmAsm = yvmAsm;
+    	this.pileOp = new Stack<Character>();
+    	this.pileType = new Stack<type>();
     }
     
     public void entete(){
