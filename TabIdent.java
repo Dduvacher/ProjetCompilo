@@ -28,6 +28,10 @@ public class TabIdent {
     	}
     }
     
+    public int getIterateur(){
+    	return this.iterateur;
+    }
+    
     public String toString(){
     	return this.table.toString();
     }

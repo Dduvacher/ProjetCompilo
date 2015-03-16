@@ -7,19 +7,25 @@ import java.io.PrintWriter;
 public class YVM {
     private PrintWriter p; // objet pour écrire dans un fichier
     public Yaka yaka;
+    private TabIdent tab;
     
     //contructeur qui prend en param le nom du fichier dans lequel écrire les instrucions YVM
-    public YVM(String fileName){
+    public YVM(String fileName, TabIdent tab){
     	try {
 			this.p = new PrintWriter(new FileOutputStream(fileName));
 		}catch (FileNotFoundException e) {
 			System.out.println("erreur: ouverture du fichier " + fileName);
 		}
+    	this.tab = tab;
     }
     
     //entete et queue
     public void entete(){
     	p.println("entete");
+    }
+    
+    public void ouvrePrinc(){
+    	p.println("ouvrePrinc " + this.tab.getIterateur()*-1);
     }
     
     public void queue(){

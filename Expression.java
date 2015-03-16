@@ -220,7 +220,7 @@ public class Expression implements Constante{
     			break;
     	}
     }
-    
+    	
     public void ecrireIdent(Ident t){
     	// si l'ident n'est pas dans la table
     	if(t == null)
@@ -245,6 +245,11 @@ public class Expression implements Constante{
     	else
     		this.yvm.iconst(0);
 	
+    }
+    
+    public void ouvrePrinc(){
+    	this.yvm.ouvrePrinc();
+    	this.yvmAsm.ouvrePrinc();
     }
 
 }

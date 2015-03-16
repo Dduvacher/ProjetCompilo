@@ -8,15 +8,17 @@ public class YVMasm extends YVM {
 	
 	private PrintWriter p; // objet pour écrire dans un fichier
 	public Yaka yaka;
+	private TabIdent tab;
 	
 	//contructeur qui prend en param le nom du fichier dans lequel écrire les instrucions YVM
-	public YVMasm(String fileName){
-		super(fileName);
+	public YVMasm(String fileName, TabIdent tab){
+		super(fileName,tab);
 		try {
 			this.p = new PrintWriter(new FileOutputStream(fileName));
 		}catch (FileNotFoundException e) {
 			System.out.println("erreur: ouverture du fichier " + fileName);
 		}
+		this.tab = tab;
 	}
 	
     //entete et queue
@@ -28,6 +30,11 @@ public class YVMasm extends YVM {
     	p.println(".CODE");
     	p.println("debut :");
     	p.println("STARTUPCODE");
+    }
+    
+    public void ouvrePrinc(){
+    	p.println("mov bp,sp");
+    	p.println("sub sp," + this.tab.getIterateur()*-1);
     }
     
     public void queue(){
