@@ -18,8 +18,8 @@ PARSER_BEGIN(Yaka)
 
 
 public class Yaka {
- static YVM fichYVM = new YVM("Fichier YVM");
- static YVMasm fichYVMasm = new YVMasm("Fichier YVMasm");
+ static YVM fichYVM = new YVM("Fichier YVM",tab);
+ static YVMasm fichYVMasm = new YVMasm("Fichier YVMasm",tab);
  static Expression exp = new Expression(fichYVM,fichYVMasm);
  static TabIdent tab = new TabIdent();
  static Declaration dec = new Declaration(fichYVM, fichYVMasm);
@@ -237,13 +237,13 @@ void primaire (): {}
 
 void valeur () : {}
 { <entier> {exp.empileType('e');
-			ecrireEntier(YakaTokenManager.entierLu);}
+			exp.ecrireEntier(YakaTokenManager.entierLu);}
  | <ident>{	exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());
-			ecrireIdent(tab.chercheIdent(YakaTokenManager.identLu));}
+			exp.ecrireIdent(tab.chercheIdent(YakaTokenManager.identLu));}
  | <VRAI>  {exp.empileType('b');
- 			ecrireBool(true);}
+ 			exp.ecrireBool(Constante.bool.VRAI);}
  | <FAUX>  {exp.empileType('b');
- 			ecrireBool(false);}
+ 			exp.ecrireBool(Constante.bool.FAUX);}
  
 }
 
