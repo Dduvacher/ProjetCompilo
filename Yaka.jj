@@ -2,7 +2,7 @@
  *
  *       Auteur: Pedrono Marie-Jo
  *
- * 	création : 13 février 2002
+ * 	crï¿½ation : 13 fï¿½vrier 2002
  *
  *     nature : projet etudiant
  *
@@ -83,7 +83,7 @@ SKIP :
 }
 
 
-/* Mots réservés*/
+/* Mots rï¿½servï¿½s*/
 
 TOKEN :
 {
@@ -237,7 +237,7 @@ void primaire (): {}
 
 void valeur () : {}
 { <entier> {exp.empileType('e');}
- | <ident> {exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getType());}
+ | <ident> {exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());}
  | <VRAI>  {exp.empileType('b');}
  | <FAUX>  {exp.empileType('b');}
  
