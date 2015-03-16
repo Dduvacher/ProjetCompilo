@@ -236,14 +236,19 @@ public class Expression implements Constante{
     
     public void ecrireEntier(int t){
     	this.yvm.iconst(t);
+    	this.yvmAsm.iconst(t);
     	
     }
 
     public void ecrireBool(bool t){
-    	if(t == bool.VRAI)
+    	if(t == bool.VRAI){
     		this.yvm.iconst(-1);
-    	else
+    	    this.yvmAsm.iconst(-1);
+    	}
+    	else {
     		this.yvm.iconst(0);
+    	    this.yvmAsm.iconst(0);
+    	}
 	
     }
     
