@@ -3,5 +3,6 @@
 public interface Constante {
     
     enum type {BOOL, ENTIER, ERREUR};
+    enum bool {VRAI,FAUX};
 
 }
