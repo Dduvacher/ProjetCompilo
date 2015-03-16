@@ -141,9 +141,9 @@ TOKEN  :
 /**************************************/
 void analyse() : {}
 {
-   <PROGRAMME> <ident>	
+   <PROGRAMME>{exp.entete();} <ident>	
    bloc()
-   <FPROGRAMME> 
+   <FPROGRAMME>{exp.queue();}
 }
 
 void bloc() : {}{
