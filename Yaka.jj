@@ -18,10 +18,10 @@ PARSER_BEGIN(Yaka)
 
 
 public class Yaka {
+ static TabIdent tab = new TabIdent();
  static YVM fichYVM = new YVM("Fichier YVM",tab);
  static YVMasm fichYVMasm = new YVMasm("Fichier YVMasm",tab);
  static Expression exp = new Expression(fichYVM,fichYVMasm);
- static TabIdent tab = new TabIdent();
  static Declaration dec = new Declaration(fichYVM, fichYVMasm);
 
   public static void main(String args[]) { 
@@ -148,7 +148,7 @@ void analyse() : {}
 
 void bloc() : {}{
  (declConst())*
- (declVar())*		
+ (declVar())* {exp.ouvrePrinc();}		
    suiteExpr() 
 }
 
