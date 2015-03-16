@@ -37,8 +37,10 @@ public class Expression implements Constante{
     			//on ne peut faire des additions qu'entre deux entiers
     			if(x == y && x == type.ENTIER)
     				this.pileType.push(type.ENTIER);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     			
     		case '-':
@@ -48,8 +50,10 @@ public class Expression implements Constante{
     			//on ne peut faire des soustractions qu'entre deux entiers
     			if(x == y && x == type.ENTIER)
     				this.pileType.push(type.ENTIER);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     			
     		case 'o':
@@ -59,8 +63,10 @@ public class Expression implements Constante{
     			//on ne peut faire des 'OU' qu'entre deux bool
     			if(x == y && x == type.BOOL)
     				this.pileType.push(type.BOOL);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     	}
     }
@@ -76,8 +82,10 @@ public class Expression implements Constante{
     			//on ne peut faire des multiplications qu'entre deux entiers
     			if(x == y && x == type.ENTIER)
     				this.pileType.push(type.ENTIER);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     			
     		case '/':
@@ -87,8 +95,10 @@ public class Expression implements Constante{
     			//on ne peut faire des divisions qu'entre deux entiers
     			if(x == y && x == type.ENTIER)
     				this.pileType.push(type.ENTIER);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     			
     		case 'a':
@@ -98,8 +108,10 @@ public class Expression implements Constante{
     			//on ne peut faire des 'ET' qu'entre deux bool
     			if(x == y && x == type.BOOL)
     				this.pileType.push(type.BOOL);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     	}
     }
@@ -115,8 +127,10 @@ public class Expression implements Constante{
     			//on ne peut faire des comparaisons qu'entre deux bool
     			if(x == y && x == type.BOOL)
     				this.pileType.push(type.BOOL);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     			
     		case '<':
@@ -126,8 +140,10 @@ public class Expression implements Constante{
     			//on ne peut faire des comparaisons qu'entre deux bool
     			if(x == y && x == type.BOOL)
     				this.pileType.push(type.BOOL);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     			
     		case 's': //>=
@@ -137,8 +153,10 @@ public class Expression implements Constante{
     			//on ne peut faire des comparaisons qu'entre deux bool
     			if(x == y && x == type.BOOL)
     				this.pileType.push(type.BOOL);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     			
     		case 'i': //<=
@@ -148,8 +166,10 @@ public class Expression implements Constante{
     			//on ne peut faire des comparaisons qu'entre deux bool
     			if(x == y && x == type.BOOL)
     				this.pileType.push(type.BOOL);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     			
     		case '=':
@@ -159,8 +179,10 @@ public class Expression implements Constante{
     			//on ne peut faire des comparaisons qu'entre deux bool
     			if(x == y && x == type.BOOL)
     				this.pileType.push(type.BOOL);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     			
     		case 'd': //<>
@@ -170,8 +192,10 @@ public class Expression implements Constante{
     			//on ne peut faire des comparaisons qu'entre deux bool
     			if(x == y && x == type.BOOL)
     				this.pileType.push(type.BOOL);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     	}
     }
@@ -186,8 +210,10 @@ public class Expression implements Constante{
     			//on ne peut faire des moins que sur un entier
     			if(x == type.ENTIER)
     				this.pileType.push(type.ENTIER);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     			
     		case 'n':
@@ -197,8 +223,10 @@ public class Expression implements Constante{
     			//on ne peut faire des 'NON' que sur un bool
     			if(x == type.BOOL)
     				this.pileType.push(type.BOOL);
-    			else
+    			else{
     				this.pileType.push(type.ERREUR);
+    				System.out.println("ERREUR : TYPES INCOMPATIBLES");
+    				}
     			break;
     	}
     }
