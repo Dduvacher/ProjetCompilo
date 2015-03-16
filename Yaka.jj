@@ -166,10 +166,10 @@ void defConst() : {}
 }
 
 void valConst() : {}{
-  <entier> {dec.placerConst(dec.identLu,YakaTokenManager.entierLu,type.ENTIER,tab);}
- | <ident>	{dec.placerConst(dec.identLu,YakaTokenManager.identLu,tab.chercheIdent(YakaTokenManager.identLu).getType(),tab);}	
- | <VRAI> 	{dec.placerConst(dec.identLu,YakaTokenManager.identLu,type.BOOL,tab);}	
- | <FAUX> 	{dec.placerConst(dec.identLu,YakaTokenManager.identLu,type.BOOL,tab);}	
+  <entier> {dec.placerConst(dec.identLu,YakaTokenManager.entierLu,Constante.type.ENTIER,tab);}
+ | <ident>	{dec.placerConst(dec.identLu,tab.chercheIdent(YakaTokenManager.identLu.getValeur(),tab.chercheIdent(YakaTokenManager.identLu).getType(),tab);}	
+ | <VRAI> 	{dec.placerConst(dec.identLu,Constante.bool.VRAI,Constante.type.BOOL,tab);}	
+ | <FAUX> 	{dec.placerConst(dec.identLu,Constante.bool.VRAI,Constante.type.BOOL,tab);}	
 }
 
 
@@ -185,8 +185,8 @@ void declVar() : {}
 
 void type() :{}
 {
-   <ENTIER> {dec.typeLu=type.ENTIER;}		
- | <BOOLEEN> {dec.typeLu=type.BOOL;}	
+   <ENTIER> {dec.typeLu=Constante.type.ENTIER;}		
+ | <BOOLEEN> {dec.typeLu=Constante.type.BOOL;}	
 }
 /*
  * Syntaxe des instructions.
