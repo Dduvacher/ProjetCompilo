@@ -125,7 +125,7 @@ public class Expression implements Constante{
     			this.yvmAsm.isup();
     			
     			//on ne peut faire des comparaisons qu'entre deux bool
-    			if(x == y && x == type.BOOL)
+    			if(x == y && x == type.ENTIER)
     				this.pileType.push(type.BOOL);
     			else{
     				this.pileType.push(type.ERREUR);
@@ -138,7 +138,7 @@ public class Expression implements Constante{
     			this.yvmAsm.iinf();    			
     			
     			//on ne peut faire des comparaisons qu'entre deux bool
-    			if(x == y && x == type.BOOL)
+    			if(x == y && x == type.ENTIER)
     				this.pileType.push(type.BOOL);
     			else{
     				this.pileType.push(type.ERREUR);
@@ -151,7 +151,7 @@ public class Expression implements Constante{
     			this.yvmAsm.isupegal();
     			
     			//on ne peut faire des comparaisons qu'entre deux bool
-    			if(x == y && x == type.BOOL)
+    			if(x == y && x == type.ENTIER)
     				this.pileType.push(type.BOOL);
     			else{
     				this.pileType.push(type.ERREUR);
@@ -164,7 +164,7 @@ public class Expression implements Constante{
     			this.yvmAsm.iinfegal();
     			
     			//on ne peut faire des comparaisons qu'entre deux bool
-    			if(x == y && x == type.BOOL)
+    			if(x == y && x == type.ENTIER)
     				this.pileType.push(type.BOOL);
     			else{
     				this.pileType.push(type.ERREUR);
@@ -177,7 +177,9 @@ public class Expression implements Constante{
     			this.yvmAsm.iegal();
     			
     			//on ne peut faire des comparaisons qu'entre deux bool
-    			if(x == y && x == type.BOOL)
+    			if(x == y && x == type.ENTIER)
+    				this.pileType.push(type.BOOL);
+    			else if(x == y && x == type.BOOL)
     				this.pileType.push(type.BOOL);
     			else{
     				this.pileType.push(type.ERREUR);
@@ -191,6 +193,8 @@ public class Expression implements Constante{
     			
     			//on ne peut faire des comparaisons qu'entre deux bool
     			if(x == y && x == type.BOOL)
+    				this.pileType.push(type.BOOL);
+    			else if(x == y && x == type.ENTIER)
     				this.pileType.push(type.BOOL);
     			else{
     				this.pileType.push(type.ERREUR);
