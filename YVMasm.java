@@ -33,6 +33,7 @@ public class YVMasm extends YVM {
     }
     
     public void ouvrePrinc(){
+    	p.println("; ouvrePrinc " + (this.tab.getIterateur()+2)*-1);
     	p.println("mov bp,sp");
     	p.println("sub sp," + (this.tab.getIterateur()+2)*-1);
     }
