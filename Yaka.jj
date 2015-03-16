@@ -18,8 +18,8 @@ PARSER_BEGIN(Yaka)
 
 
 public class Yaka {
- static YVM fichYVM = new YVM("Fichier YVM");
- static YVMasm fichYVMasm = new YVMasm("Fichier YVMasm");
+ static YVM fichYVM = new YVM("Fichier YVM",tab);
+ static YVMasm fichYVMasm = new YVMasm("Fichier YVMasm",tab);
  static Expression exp = new Expression(fichYVM,fichYVMasm);
  static TabIdent tab = new TabIdent();
  static Declaration dec = new Declaration(fichYVM, fichYVMasm);
@@ -137,7 +137,7 @@ TOKEN  :
 
 
 /**************************************/
-/********debut de la grammaire ********/
+/********debut de la grammaire********/
 /**************************************/
 void analyse() : {}
 {
@@ -236,10 +236,14 @@ void primaire (): {}
 }
 
 void valeur () : {}
-{ <entier> {exp.empileType('e');}
- | <ident> {exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());}
- | <VRAI>  {exp.empileType('b');}
- | <FAUX>  {exp.empileType('b');}
+{ <entier> {exp.empileType('e');
+			exp.ecrireEntier(YakaTokenManager.entierLu);}
+ | <ident>{	exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());
+			exp.ecrireIdent(tab.chercheIdent(YakaTokenManager.identLu));}
+ | <VRAI>  {exp.empileType('b');
+ 			exp.ecrireBool(Constante.bool.VRAI);}
+ | <FAUX>  {exp.empileType('b');
+ 			exp.ecrireBool(Constante.bool.FAUX);}
  
 }
 
