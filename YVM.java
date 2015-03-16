@@ -24,6 +24,7 @@ public class YVM {
     
     public void queue(){
     	p.println("queue");
+    	p.close();
     }
     
     //instructions arithmétiques

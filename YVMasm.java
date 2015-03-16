@@ -31,14 +31,17 @@ public class YVMasm extends YVM {
     }
     
     public void queue(){
+    	p.println();
     	p.println("; queue");
     	p.println("nop");
     	p.println("exitcode");
     	p.println("end debut");
+    	p.close();
     }
 	
 	//instructions arithmétiques
     public void iadd() {
+    	p.println();
     	p.println("; iadd");
     	p.println("pop bx");
     	p.println("pop ax");
@@ -47,6 +50,7 @@ public class YVMasm extends YVM {
     }
     
     public void isub() {
+    	p.println();
     	p.println("; isub");
     	p.println("pop bx");
     	p.println("pop ax");
@@ -55,6 +59,7 @@ public class YVMasm extends YVM {
     }
     
     public void imul() {
+    	p.println();
     	p.println("; imul");
     	p.println("pop bx");
     	p.println("pop ax");
@@ -63,6 +68,7 @@ public class YVMasm extends YVM {
     }
     
     public void idiv() {
+    	p.println();
     	p.println("; idiv");
     	p.println("pop bx");
     	p.println("pop ax");
@@ -72,6 +78,7 @@ public class YVMasm extends YVM {
     }
     
     public void inot() {
+    	p.println();
     	p.println("; inot");
     	p.println("pop ax");
     	p.println("not ax");
@@ -79,6 +86,7 @@ public class YVMasm extends YVM {
     }
 
     public void ineg() {
+    	p.println();
     	p.println("; ineg");
     	p.println("pop ax");
     	p.println("lea ax, [ax * -1]");
@@ -86,6 +94,7 @@ public class YVMasm extends YVM {
     }
     
     public void ior() {
+    	p.println();
     	p.println("; ior");
     	p.println("pop bx");
     	p.println("pop ax");
@@ -94,6 +103,7 @@ public class YVMasm extends YVM {
     }
     
     public void iand() {
+    	p.println();
     	p.println("; iand");
     	p.println("pop bx");
     	p.println("pop ax");
@@ -103,6 +113,7 @@ public class YVMasm extends YVM {
     
     //instructions de comparaisons
     public void iinf() {
+    	p.println();
     	p.println("; iinf");
     	p.println("pop bx");
     	p.println("pop ax");
@@ -114,6 +125,7 @@ public class YVMasm extends YVM {
     }
     
     public void isup() {
+    	p.println();
     	p.println("; isup");
     	p.println("pop bx");
     	p.println("pop ax");
@@ -125,6 +137,7 @@ public class YVMasm extends YVM {
     }
     
     public void iinfegal() {
+    	p.println();
     	p.println("; iinfegal");
     	p.println("pop bx");
     	p.println("pop ax");
@@ -136,6 +149,7 @@ public class YVMasm extends YVM {
     }
     
     public void isupegal() {
+    	p.println();
     	p.println("; isupegal");
     	p.println("pop bx");
     	p.println("pop ax");
@@ -147,6 +161,7 @@ public class YVMasm extends YVM {
     }
     
     public void iegal() {
+    	p.println();
     	p.println("; iegal");
     	p.println("pop bx");
     	p.println("pop ax");
@@ -158,6 +173,7 @@ public class YVMasm extends YVM {
     }
     
     public void idiff() {
+    	p.println();
     	p.println("; idiff");
     	p.println("pop bx");
     	p.println("pop ax");
@@ -170,23 +186,27 @@ public class YVMasm extends YVM {
     
     //instructions de stockage et de chargement
     public void iload(int i) {
+    	p.println();
     	p.println("; iload" + i);
     	p.println("push word ptr[bp-" + i +"]");
     }
     
     public void istore(int i) {
+    	p.println();
     	p.println("; istore " + i);
     	p.println("pop ax");
     	p.println("mov word ptr[bp+" + i + "],ax");
     }
 
     public void iconst(int i) {
+    	p.println();
     	p.println("; iconst " + i);
     	p.println("push " + i);
     }
     
     //instructions de contrôle de flot
     public void ifeq(String eti) {
+    	p.println();
     	p.println("; ifeq " + eti);
     	p.println("pop ax");
     	p.println("cmp ax,0");
@@ -194,12 +214,14 @@ public class YVMasm extends YVM {
     }
 
     public void goTo(String eti) {
+    	p.println();
     	p.println("; goto " + eti);
     	p.println("jmp " + eti);
     }
     
     //instructions de pile
     public void ouvrePrinc(int i) {
+    	p.println();
     	p.println("; ouvrePrinc" + i);
     	p.println("mov bp,sp");
     	p.println("sub sp," + i);
