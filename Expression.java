@@ -222,15 +222,29 @@ public class Expression implements Constante{
     }
     
     public void ecrireIdent(Ident t){
-    	
+    	// si l'ident n'est pas dans la table
+    	if(t == null)
+    		System.out.println("ERREUR : utilisation d'un ident non déclaré");
+    	else{
+    		if(t.estVariable())
+    			this.yvm.iload(t.getValeur());
+    		else
+    			this.yvm.iconst(t.getValeur());
+    	}
+    		
     }
     
     public void ecrireEntier(int t){
+    	this.yvm.iconst(t);
     	
     }
 
     public void ecrireBool(bool t){
+    	if(t == bool.VRAI)
+    		this.yvm.iconst(-1);
+    	else
+    		this.yvm.iconst(0);
 	
-}
+    }
 
 }
