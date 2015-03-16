@@ -110,15 +110,15 @@ public class Yaka implements YakaConstants {
       break;
     case ident:
       jj_consume_token(ident);
-                 dec.placerConst(dec.identLu,tab.chercheIdent(YakaTokenManager.identLu.getValeur(),tab.chercheIdent(YakaTokenManager.identLu).getType(),tab));
+                 dec.placerConst(dec.identLu,tab.chercheIdent(YakaTokenManager.identLu).getValeur(),tab.chercheIdent(YakaTokenManager.identLu).getType(),tab);
       break;
     case VRAI:
       jj_consume_token(VRAI);
-                 dec.placerConst(dec.identLu,Constante.bool.VRAI,Constante.type.BOOL,tab);
+                 dec.placerConst(dec.identLu,/*Constante.bool.VRAI*/-1,Constante.type.BOOL,tab);
       break;
     case FAUX:
       jj_consume_token(FAUX);
-                 dec.placerConst(dec.identLu,Constante.bool.VRAI,Constante.type.BOOL,tab);
+                 dec.placerConst(dec.identLu,/*Constante.bool.VRAI*/0,Constante.type.BOOL,tab);
       break;
     default:
       jj_la1[3] = jj_gen;
@@ -324,7 +324,7 @@ public class Yaka implements YakaConstants {
       break;
     case ident:
       jj_consume_token(ident);
-            exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getType());
+            exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());
       break;
     case VRAI:
       jj_consume_token(VRAI);

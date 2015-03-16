@@ -15,7 +15,11 @@ public abstract class Ident implements Constante{
     
     public abstract int getValeur();
     
-    public char getType(){
+    public type getType(){
+    	return this.type;
+    }
+    
+    public char getTypeToChar(){
     	switch(this.type){
     	case BOOL: return 'b';
     	case ENTIER: return 'e';
