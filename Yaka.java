@@ -37,7 +37,7 @@ public class Yaka implements YakaConstants {
   }
 
 /**************************************/
-/********debut de la grammaire ********/
+/********debut de la grammaire********/
 /**************************************/
   static final public void analyse() throws ParseException {
     jj_consume_token(PROGRAMME);
@@ -321,18 +321,22 @@ public class Yaka implements YakaConstants {
     case entier:
       jj_consume_token(entier);
             exp.empileType('e');
+                        ecrireEntier(YakaTokenManager.entierLu);
       break;
     case ident:
       jj_consume_token(ident);
-            exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());
+                exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());
+                        ecrireIdent(tab.chercheIdent(YakaTokenManager.identLu));
       break;
     case VRAI:
       jj_consume_token(VRAI);
             exp.empileType('b');
+                        ecrireBool(true);
       break;
     case FAUX:
       jj_consume_token(FAUX);
             exp.empileType('b');
+                        ecrireBool(false);
       break;
     default:
       jj_la1[14] = jj_gen;

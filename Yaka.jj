@@ -137,7 +137,7 @@ TOKEN  :
 
 
 /**************************************/
-/********debut de la grammaire ********/
+/********debut de la grammaire********/
 /**************************************/
 void analyse() : {}
 {
@@ -236,10 +236,14 @@ void primaire (): {}
 }
 
 void valeur () : {}
-{ <entier> {exp.empileType('e');}
- | <ident> {exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());}
- | <VRAI>  {exp.empileType('b');}
- | <FAUX>  {exp.empileType('b');}
+{ <entier> {exp.empileType('e');
+			ecrireEntier(YakaTokenManager.entierLu);}
+ | <ident>{	exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());
+			ecrireIdent(tab.chercheIdent(YakaTokenManager.identLu));}
+ | <VRAI>  {exp.empileType('b');
+ 			ecrireBool(true);}
+ | <FAUX>  {exp.empileType('b');
+ 			ecrireBool(false);}
  
 }
 
