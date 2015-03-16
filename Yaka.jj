@@ -167,9 +167,9 @@ void defConst() : {}
 
 void valConst() : {}{
   <entier> {dec.placerConst(dec.identLu,YakaTokenManager.entierLu,Constante.type.ENTIER,tab);}
- | <ident>	{dec.placerConst(dec.identLu,tab.chercheIdent(YakaTokenManager.identLu.getValeur(),tab.chercheIdent(YakaTokenManager.identLu).getType(),tab);}	
- | <VRAI> 	{dec.placerConst(dec.identLu,Constante.bool.VRAI,Constante.type.BOOL,tab);}	
- | <FAUX> 	{dec.placerConst(dec.identLu,Constante.bool.VRAI,Constante.type.BOOL,tab);}	
+ | <ident>	{dec.placerConst(dec.identLu,tab.chercheIdent(YakaTokenManager.identLu).getValeur(),tab.chercheIdent(YakaTokenManager.identLu).getType(),tab);}	
+ | <VRAI> 	{dec.placerConst(dec.identLu,/*Constante.bool.VRAI*/-1,Constante.type.BOOL,tab);}	
+ | <FAUX> 	{dec.placerConst(dec.identLu,/*Constante.bool.VRAI*/0,Constante.type.BOOL,tab);}	
 }
 
 
