@@ -223,7 +223,7 @@ public class Yaka implements YakaConstants {
                 exp.idLu=YakaTokenManager.identLu;
     jj_consume_token(42);
     expression();
-                                                                     affecter(tab.chercheIdent(exp.idLu));
+                                                                     exp.affecter(tab.chercheIdent(exp.idLu));
   }
 
   static final public void lecture() throws ParseException {
@@ -231,7 +231,7 @@ public class Yaka implements YakaConstants {
     jj_consume_token(43);
     jj_consume_token(ident);
     jj_consume_token(44);
-                               lire(YakaTokenManager.identLu);
+                               exp.lire(tab.chercheIdent(YakaTokenManager.identLu));
   }
 
   static final public void ecriture() throws ParseException {
@@ -244,12 +244,12 @@ public class Yaka implements YakaConstants {
       break;
     case chaine:
       jj_consume_token(chaine);
-                                                             exp.ecrireChaine(YakaTokenManager.chaineLue);
+                                                             exp.ecrire(YakaTokenManager.chaineLue);
       jj_consume_token(44);
       break;
     case ALALIGNE:
       jj_consume_token(ALALIGNE);
-                                                                                                                               aLaLigne();
+                                                                                                                         exp.aLaLigne();
       break;
     default:
       jj_la1[9] = jj_gen;

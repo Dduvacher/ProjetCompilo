@@ -200,18 +200,18 @@ void instruction() :{}  {	affectation() | lecture() | ecriture()
 }
 
 void affectation() :{}
-{	<ident>{exp.idLu=YakaTokenManager.identLu;} "=" expression(){affecter(tab.chercheIdent(exp.idLu));}
+{	<ident>{exp.idLu=YakaTokenManager.identLu;} "=" expression(){exp.affecter(tab.chercheIdent(exp.idLu));}
 }
 
 void lecture() :{}
 {
-	< LIRE >"("<ident>")" {lire(YakaTokenManager.identLu);}
+	< LIRE >"("<ident>")" {exp.lire(tab.chercheIdent(YakaTokenManager.identLu));}
 }
 
 
 void ecriture() :{}
 {
-	< ECRIRE >"("expression(){exp.ecrire();} | <chaine> {exp.ecrireChaine(YakaTokenManager.chaineLue);}")" | < ALALIGNE > {aLaLigne();}
+	< ECRIRE >"("expression(){exp.ecrire();} | <chaine> {exp.ecrire(YakaTokenManager.chaineLue);}")" | < ALALIGNE > {exp.aLaLigne();}
 }
 /*
  * Syntaxe des instructions.
