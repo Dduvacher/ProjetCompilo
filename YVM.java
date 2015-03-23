@@ -116,5 +116,26 @@ public class YVM {
     public void ouvrePrinc(int i) {
     	p.println("ouvrePrinc" + i);
     }
+    
+    //entrées sorties
+    public void ecrireEnt(){
+    	p.println("ecrireEnt");
+    }
+    
+    public void ecrireChaine(String s){
+    	p.println("ecrireChaine \"" + s + "\"");
+    }
+
+    public void ecrireBool(){
+    	p.println("ecrireBool");
+    }
+    
+	public void lireEnt(int offset){
+		p.println("lireEnt " + offset);
+	}
+	
+	public void aLaLigne(){
+		p.println("aLaLigne");
+	}
 
 }

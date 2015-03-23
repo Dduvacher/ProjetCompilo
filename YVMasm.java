@@ -10,6 +10,8 @@ public class YVMasm extends YVM {
 	public Yaka yaka;
 	private TabIdent tab;
 	
+	private int nbMess; //compte le nombre de chaine écrite, soit l'indice du mess suivant
+	
 	//contructeur qui prend en param le nom du fichier dans lequel écrire les instrucions YVM
 	public YVMasm(String fileName, TabIdent tab){
 		super(fileName,tab);
@@ -19,11 +21,18 @@ public class YVMasm extends YVM {
 			System.out.println("erreur: ouverture du fichier " + fileName);
 		}
 		this.tab = tab;
+		
+		this.nbMess = 0;
 	}
 	
     //entete et queue
     public void entete(){
     	p.println("; entete");
+    	
+    	p.println("extrn lirent:proc, ecrent:proc");
+    	p.println("extrn ecrbool:proc");
+    	p.println("extrn ecrch:proc, ligsuiv:proc");
+    	
     	p.println(".model SMALL");
     	p.println(".586");
     	
@@ -234,5 +243,41 @@ public class YVMasm extends YVM {
     	p.println("mov bp,sp");
     	p.println("sub sp," + i);
     }
+    
+    //entrées sorties
+    public void ecrireEnt(){
+    	p.println(";ecrireEnt");
+    	p.println("call ecrent");
+    }
+    
+    public void ecrireChaine(String s){
+    	p.println(";ecrireChaine \"" + s + "\"");
+    	
+    	p.println(".DATA");
+    	p.println("mess" + this.nbMess + " DB \"" + s + "\"");
+    	p.println(".CODE");
+    	p.println("lea dx,mess" + this.nbMess);
+    	p.println("push dx");
+    	p.println("call ecrch");
+    	
+    	this.nbMess++;
+    }
+
+    public void ecrireBool(){
+    	p.println(";ecrireBool");
+    	p.println("call ecrbool");
+    }
+    
+	public void lireEnt(int offset){
+		p.println(";lireEnt " + offset);
+		p.println("lea dx,[bp-" + offset + "]");
+		p.println("push dx");
+		p.println("call lirent");
+	}
+	
+	public void aLaLigne(){
+		p.println(";aLaLigne");
+		p.println("call ligsuiv");
+	}
     
 }
