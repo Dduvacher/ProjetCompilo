@@ -267,7 +267,6 @@ public class Expression implements Constante{
     			this.yvmAsm.iconst(t.getValeur());
     		}
     	}
-    		
     }
     
     public void ecrireEntier(int t){
@@ -301,9 +300,8 @@ public class Expression implements Constante{
     	}
     	else {
     		System.out.println("Valeur en sommet de pile: "+pileType.pop());
-    		System.out.println("ERREUR : La valeur en sommet de pile n'est pas un type reconnu.");
+    		System.out.println("ERREUR : La valeur en sommet de pile n'est pas d'un type reconnu.");
     		this.pileType.push(type.ERREUR);
-    		
     	}
     }
     
@@ -312,9 +310,9 @@ public class Expression implements Constante{
     	this.yvmAsm.ecrireChaine(s);
     }
     
-    public void lire(int t){
-    	this.yvm.lireEnt(t);
-    	this.yvmAsm.lireEnt(t);
+    public void lire(Ident id){
+    	this.yvm.lireEnt(id.getValeur());
+    	this.yvmAsm.lireEnt(id.getValeur());
     }
     
     public void aLaLigne(){
@@ -326,6 +324,16 @@ public class Expression implements Constante{
     public void ouvrePrinc(){
     	this.yvm.ouvrePrinc();
     	this.yvmAsm.ouvrePrinc();
+    }
+    
+    public void affecter(Ident id){
+    	if (pileType.peek() == id.getType()){
+    		yvm.istore(id.getValeur());
+    		yvmAsm.istore(id.getValeur());
+    	}
+    	else {
+    		System.out.println("ERREUR : La valeur en sommet de pile n'est pas d'un type compatible avec le type de l'IDENT donné.");
+    	}
     }
 
 }
