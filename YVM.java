@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.util.Stack;
 
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
@@ -8,6 +9,9 @@ public class YVM {
     private PrintWriter p; // objet pour écrire dans un fichier
     public Yaka yaka;
     private TabIdent tab;
+    //stocke la numérotation des "faire"
+    private Stack<Integer> etiquetteFaire;
+    private int nbEtiquette;
     
     //contructeur qui prend en param le nom du fichier dans lequel écrire les instrucions YVM
     public YVM(String fileName, TabIdent tab){
@@ -17,6 +21,9 @@ public class YVM {
 			System.out.println("erreur: ouverture du fichier " + fileName);
 		}
     	this.tab = tab;
+    	
+    	this.etiquetteFaire = new Stack<Integer>();
+    	this.nbEtiquette = 0;
     }
     
     //entete et queue
@@ -136,6 +143,21 @@ public class YVM {
 	
 	public void aLaLigne(){
 		p.println("aLaLigne");
+	}
+	
+	//itération
+	public void tantQue(){
+		this.nbEtiquette++;
+		this.etiquetteFaire.push(this.nbEtiquette);
+		p.println("FAIRE" + this.etiquetteFaire.peek() + ":");
+	}
+	
+	public void faire(){
+		p.println("iffaux FAIT" + this.etiquetteFaire.peek());
+	}
+	
+	public void fait(){
+		p.println("goto FAIRE" + this.etiquetteFaire.pop());
 	}
 
 }

@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.util.Stack;
 
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
@@ -11,6 +12,10 @@ public class YVMasm extends YVM {
 	private TabIdent tab;
 	
 	private int nbMess; //compte le nombre de chaine écrite, soit l'indice du mess suivant
+	
+	//stocke la numérotation des "faire"
+    private Stack<Integer> etiquetteFaire;
+    private int nbEtiquette;
 	
 	//contructeur qui prend en param le nom du fichier dans lequel écrire les instrucions YVM
 	public YVMasm(String fileName, TabIdent tab){
@@ -23,6 +28,9 @@ public class YVMasm extends YVM {
 		this.tab = tab;
 		
 		this.nbMess = 0;
+		
+		this.etiquetteFaire = new Stack<Integer>();
+    	this.nbEtiquette = 0;
 	}
 	
     //entete et queue
@@ -246,12 +254,12 @@ public class YVMasm extends YVM {
     
     //entrées sorties
     public void ecrireEnt(){
-    	p.println(";ecrireEnt");
+    	p.println("; ecrireEnt");
     	p.println("call ecrent");
     }
     
     public void ecrireChaine(String s){
-    	p.println(";ecrireChaine \"" + s + "\"");
+    	p.println("; ecrireChaine \"" + s + "\"");
     	
     	p.println(".DATA");
     	p.println("mess" + this.nbMess + " DB \"" + s + "\"");
@@ -264,20 +272,39 @@ public class YVMasm extends YVM {
     }
 
     public void ecrireBool(){
-    	p.println(";ecrireBool");
+    	p.println("; ecrireBool");
     	p.println("call ecrbool");
     }
     
 	public void lireEnt(int offset){
-		p.println(";lireEnt " + offset);
+		p.println("; lireEnt " + offset);
 		p.println("lea dx,[bp-" + offset + "]");
 		p.println("push dx");
 		p.println("call lirent");
 	}
 	
 	public void aLaLigne(){
-		p.println(";aLaLigne");
+		p.println("; aLaLigne");
 		p.println("call ligsuiv");
+	}
+	
+	//itération
+	public void tantQue(){
+		this.nbEtiquette++;
+		this.etiquetteFaire.push(this.nbEtiquette);
+		p.println("FAIRE" + this.etiquetteFaire.peek() + ":");
+	}
+	
+	public void faire(){
+		p.println("; iffaux FAIT" + this.etiquetteFaire.peek());
+		p.println("pop ax");
+		p.println("cmp ax,0");
+		p.println("je FAIT" + this.etiquetteFaire.peek());
+	}
+	
+	public void fait(){
+		p.println("; goto FAIRE" + this.etiquetteFaire.peek());
+		p.println("jmp FAIRE" + this.etiquetteFaire.pop());
 	}
     
 }
