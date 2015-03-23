@@ -267,13 +267,11 @@ public class Expression implements Constante{
     			this.yvmAsm.iconst(t.getValeur());
     		}
     	}
-    		
     }
     
     public void ecrireEntier(int t){
     	this.yvm.iconst(t);
     	this.yvmAsm.iconst(t);
-    	
     }
 
     public void ecrireBool(bool t){
@@ -285,12 +283,57 @@ public class Expression implements Constante{
     		this.yvm.iconst(0);
     	    this.yvmAsm.iconst(0);
     	}
-	
     }
+    
+    public void ecrire(){
+    	if (pileType.pop() == type.ENTIER){
+    		this.yvm.ecrireEnt();
+    		this.yvmAsm.ecrireEnt();
+    	}
+    	else if (pileType.pop() == type.BOOL){
+    		this.yvm.ecrireBool();
+    		this.yvmAsm.ecrireBool();
+    	}
+    	else if (pileType.pop() == type.ERREUR){
+    		System.out.println("ERREUR ! ERREUR ! ERREUR !");
+    		this.pileType.push(type.ERREUR);
+    	}
+    	else {
+    		System.out.println("Valeur en sommet de pile: "+pileType.pop());
+    		System.out.println("ERREUR : La valeur en sommet de pile n'est pas d'un type reconnu.");
+    		this.pileType.push(type.ERREUR);
+    	}
+    }
+    
+    public void ecrire(String s){
+    	this.yvm.ecrireChaine(s);
+    	this.yvmAsm.ecrireChaine(s);
+    }
+    
+    public void lire(Ident id){
+    	this.yvm.lireEnt(id.getValeur());
+    	this.yvmAsm.lireEnt(id.getValeur());
+    }
+    
+    public void aLaLigne(){
+    	this.yvm.aLaLigne();
+    	this.yvmAsm.aLaLigne();
+    }
+    
     
     public void ouvrePrinc(){
     	this.yvm.ouvrePrinc();
     	this.yvmAsm.ouvrePrinc();
+    }
+    
+    public void affecter(Ident id){
+    	if (pileType.peek() == id.getType()){
+    		yvm.istore(id.getValeur());
+    		yvmAsm.istore(id.getValeur());
+    	}
+    	else {
+    		System.out.println("ERREUR : La valeur en sommet de pile n'est pas d'un type compatible avec le type de l'IDENT donné.");
+    	}
     }
 
 }
