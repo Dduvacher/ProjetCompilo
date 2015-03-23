@@ -8,6 +8,7 @@ public class Expression implements Constante{
     public Stack<type> pileType;
     private YVM yvm;
     private YVMasm yvmAsm;
+    public String idLu;
     
     public Expression(YVM yvm, YVMasm yvmAsm){
     	this.yvm = yvm;

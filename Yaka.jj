@@ -149,7 +149,7 @@ void analyse() : {}
 void bloc() : {}{
  (declConst())*
  (declVar())* {exp.ouvrePrinc();}		
-   suiteExpr() 
+   suiteInstr() 
 }
 
 void declConst() : {}
@@ -188,11 +188,36 @@ void type() :{}
    <ENTIER> {dec.typeLu=Constante.type.ENTIER;}		
  | <BOOLEEN> {dec.typeLu=Constante.type.BOOL;}	
 }
+
+/*
+ * Instruction
+ */
+void suiteInstr() :{}
+{
+	instruction() (";"(instruction())?)*}
+
+void instruction() :{}  {	affectation() | lecture() | ecriture()
+}
+
+void affectation() :{}
+{	<ident>{exp.idLu=YakaTokenManager.identLu;} "=" expression(){affecter(tab.chercheIdent(exp.idLu));}
+}
+
+void lecture() :{}
+{
+	< LIRE >"("<ident>")" {lire(YakaTokenManager.identLu);}
+}
+
+
+void ecriture() :{}
+{
+	< ECRIRE >"("expression(){exp.ecrire();} | <chaine> {exp.ecrireChaine(YakaTokenManager.chaineLue);}")" | < ALALIGNE > {aLaLigne();}
+}
 /*
  * Syntaxe des instructions.
  */
-void suiteExpr() : {}
-{ (expression() (";" (expression())? )*)? }
+//void suiteExpr() : {}
+//{ (expression() (";" (expression())? )*)? }
 
 
 
