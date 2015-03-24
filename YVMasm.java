@@ -50,6 +50,7 @@ public class YVMasm extends YVM {
     }
     
     public void ouvrePrinc(){
+    	p.println();
     	p.println("; ouvrePrinc " + (this.tab.getIterateur()+2)*-1);
     	p.println("mov bp,sp");
     	p.println("sub sp," + (this.tab.getIterateur()+2)*-1);
@@ -59,7 +60,7 @@ public class YVMasm extends YVM {
     	p.println();
     	p.println("; queue");
     	p.println("nop");
-    	p.println("exitcode");
+    	p.println("EXITCODE");
     	p.println("end debut");
     	p.close();
     }
@@ -254,15 +255,17 @@ public class YVMasm extends YVM {
     
     //entrées sorties
     public void ecrireEnt(){
+    	p.println();
     	p.println("; ecrireEnt");
     	p.println("call ecrent");
     }
     
     public void ecrireChaine(String s){
-    	p.println("; ecrireChaine \"" + s + "\"");
+    	p.println();
+    	p.println("; ecrireChaine " + s);
     	
     	p.println(".DATA");
-    	p.println("mess" + this.nbMess + " DB \"" + s + "\"");
+    	p.println("mess" + this.nbMess + " DB " + s.substring(0, s.length()-1) + "$\"");
     	p.println(".CODE");
     	p.println("lea dx,mess" + this.nbMess);
     	p.println("push dx");
@@ -272,18 +275,21 @@ public class YVMasm extends YVM {
     }
 
     public void ecrireBool(){
+    	p.println();
     	p.println("; ecrireBool");
     	p.println("call ecrbool");
     }
     
 	public void lireEnt(int offset){
+		p.println();
 		p.println("; lireEnt " + offset);
-		p.println("lea dx,[bp-" + offset + "]");
+		p.println("lea dx,[bp" + offset + "]");
 		p.println("push dx");
 		p.println("call lirent");
 	}
 	
 	public void aLaLigne(){
+		p.println();
 		p.println("; aLaLigne");
 		p.println("call ligsuiv");
 	}

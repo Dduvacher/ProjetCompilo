@@ -130,7 +130,7 @@ public class YVM {
     }
     
     public void ecrireChaine(String s){
-    	p.println("ecrireChaine \"" + s + "\"");
+    	p.println("ecrireChaine " + s);
     }
 
     public void ecrireBool(){
