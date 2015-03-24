@@ -211,7 +211,7 @@ void lecture() :{}
 
 void ecriture() :{}
 {
-	< ECRIRE >"("expression(){exp.ecrire();} | <chaine> {exp.ecrire(YakaTokenManager.chaineLue);}")" | < ALALIGNE > {exp.aLaLigne();}
+	< ECRIRE >"(" ( expression(){exp.ecrire();} | <chaine> {exp.ecrire(YakaTokenManager.chaineLue);} ) ")" | < ALALIGNE > {exp.aLaLigne();}
 }
 /*
  * Syntaxe des instructions.
