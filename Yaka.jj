@@ -214,10 +214,10 @@ void ecriture() :{}
 	< ECRIRE >"(" ( expression(){exp.ecrire();} | <chaine> {exp.ecrire(YakaTokenManager.chaineLue);} ) ")" | < ALALIGNE > {exp.aLaLigne();}
 }
 /*
- * Syntaxe des instructions.
+ * Iteration
  */
-//void suiteExpr() : {}
-//{ (expression() (";" (expression())? )*)? }
+void iteration() : {}
+{ <TANT QUE >{exp.tantQue();} expression(){exp.faire();} < FAIRE > suiteInstr() < FAIT >{exp.fait();} }
 
 
 
@@ -229,7 +229,7 @@ void expression() : {}
   simpleExpr() 
   (opRel() 
   simpleExpr() {exp.OppRel();}
-  )?
+  )? | iteration()
 }
 
 
