@@ -214,14 +214,14 @@ public class YVMasm extends YVM {
     public void iload(int i) {
     	p.println();
     	p.println("; iload" + i);
-    	p.println("push word ptr[bp-" + i +"]");
+    	p.println("push word ptr[bp" + i +"]");
     }
     
     public void istore(int i) {
     	p.println();
     	p.println("; istore " + i);
     	p.println("pop ax");
-    	p.println("mov word ptr[bp+" + i + "],ax");
+    	p.println("mov word ptr[bp" + i + "],ax");
     }
 
     public void iconst(int i) {
