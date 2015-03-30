@@ -328,7 +328,10 @@ public class Expression implements Constante{
     }
     
     public void affecter(Ident id){
-    	if (pileType.peek() == id.getType()){
+    	if (id.estVariable() == false){
+    		System.out.println("ERREUR : On ne peut pas modifier une constante.");
+    	}
+    	else if (pileType.peek() == id.getType()){
     		yvm.istore(id.getValeur());
     		yvmAsm.istore(id.getValeur());
     	}
