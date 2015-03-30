@@ -115,8 +115,9 @@ public class YVMasm extends YVM {
     	p.println();
     	p.println("; ineg");
     	p.println("pop ax");
-    	p.println("lea ax, [ax * -1]");
-    	p.println("push ax");
+    	p.println("mov bx,0");
+    	p.println("sub bx,ax");
+    	p.println("push bx");
     }
     
     public void ior() {

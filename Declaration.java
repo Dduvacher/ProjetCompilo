@@ -12,8 +12,12 @@ public class Declaration implements Constante {
 
     public void placerVariable(String nom, int val, type type, TabIdent tab) {
     	if (tab.existeIdent(nom)){
+    		if(tab.chercheIdent(nom).estVariable()){
     		System.out.println("ERROR : IDENT ALREADY EXISTS");
-    	} else {
+    		}
+    		else{System.out.println("ERROR : Attention vous affectez une constante.");}
+    	} 
+    	else {
     		tab.rangeIdent(nom, new IdVar(type, val));
     		//yvm.istore(val); asm.istore(val);
     	}

@@ -287,15 +287,22 @@ public class Expression implements Constante{
     }
     
     public void ecrire(){
-    	if (pileType.pop() == type.ENTIER){
+    	if(pileType.size()==0){
+    		System.out.println("ERREUR : Pile vide");
+    		this.pileType.push(type.ERREUR);
+    	}
+    	else if (pileType.peek() == type.ENTIER){
+    		pileType.pop();
     		this.yvm.ecrireEnt();
     		this.yvmAsm.ecrireEnt();
     	}
-    	else if (pileType.pop() == type.BOOL){
+    	else if (pileType.peek() == type.BOOL){
+    		pileType.pop();
     		this.yvm.ecrireBool();
     		this.yvmAsm.ecrireBool();
     	}
-    	else if (pileType.pop() == type.ERREUR){
+    	else if (pileType.peek() == type.ERREUR){
+    		pileType.pop();
     		System.out.println("ERREUR ! ERREUR ! ERREUR !");
     		this.pileType.push(type.ERREUR);
     	}

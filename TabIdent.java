@@ -13,7 +13,7 @@ public class TabIdent {
     	this.table = new HashMap<String, Ident>();
     }
 
-    public Ident chercheIdent(String clef) throws ParseException {
+    public Ident chercheIdent(String clef) /*throws ParseException */{
     	if(this.existeIdent(clef)){
     	return this.table.get(clef);}
     	System.out.println("ERREUR: Ident doesn't exist");
