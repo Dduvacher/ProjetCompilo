@@ -142,48 +142,48 @@ public class YVMasm extends YVM {
     public void iinf() {
     	p.println();
     	p.println("; iinf");
-    	p.println("pop bx");
     	p.println("pop ax");
+    	p.println("pop bx");
     	p.println("cmp ax,bx");
-    	p.println("jge $+3");
+    	p.println("jge $+6");
     	p.println("push -1");
-    	p.println("jmp $+2");
+    	p.println("jmp $+4");
     	p.println("push 0");
     }
     
     public void isup() {
     	p.println();
     	p.println("; isup");
-    	p.println("pop bx");
     	p.println("pop ax");
+    	p.println("pop bx");
     	p.println("cmp ax,bx");
-    	p.println("jle $+3");
+    	p.println("jle $+6");
     	p.println("push -1");
-    	p.println("jmp $+2");
+    	p.println("jmp $+4");
     	p.println("push 0");
     }
     
     public void iinfegal() {
     	p.println();
     	p.println("; iinfegal");
-    	p.println("pop bx");
     	p.println("pop ax");
+    	p.println("pop bx");
     	p.println("cmp ax,bx");
-    	p.println("jg $+3");
+    	p.println("jg $+6");
     	p.println("push -1");
-    	p.println("jmp $+2");
+    	p.println("jmp $+4");
     	p.println("push 0");
     }
     
     public void isupegal() {
     	p.println();
     	p.println("; isupegal");
-    	p.println("pop bx");
     	p.println("pop ax");
+    	p.println("pop bx");
     	p.println("cmp ax,bx");
-    	p.println("jl $+3");
+    	p.println("jl $+6");
     	p.println("push -1");
-    	p.println("jmp $+2");
+    	p.println("jmp $+4");
     	p.println("push 0");
     }
     
@@ -193,9 +193,9 @@ public class YVMasm extends YVM {
     	p.println("pop bx");
     	p.println("pop ax");
     	p.println("cmp ax,bx");
-    	p.println("jne $+3");
+    	p.println("jne $+6");
     	p.println("push -1");
-    	p.println("jmp $+2");
+    	p.println("jmp $+4");
     	p.println("push 0");
     }
     
@@ -205,9 +205,9 @@ public class YVMasm extends YVM {
     	p.println("pop bx");
     	p.println("pop ax");
     	p.println("cmp ax,bx");
-    	p.println("je $+3");
+    	p.println("je $+6");
     	p.println("push -1");
-    	p.println("jmp $+2");
+    	p.println("jmp $+4");
     	p.println("push 0");
     }
     
