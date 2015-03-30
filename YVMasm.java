@@ -227,7 +227,7 @@ public class YVMasm extends YVM {
     public void iconst(int i) {
     	p.println();
     	p.println("; iconst " + i);
-    	p.println("push " + i);
+    	p.println("push word ptr " + i);
     }
     
     //instructions de contrôle de flot
