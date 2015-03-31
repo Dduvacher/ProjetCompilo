@@ -142,8 +142,8 @@ public class YVMasm extends YVM {
     public void iinf() {
     	p.println();
     	p.println("; iinf");
-    	p.println("pop ax");
     	p.println("pop bx");
+    	p.println("pop ax");
     	p.println("cmp ax,bx");
     	p.println("jge $+6");
     	p.println("push -1");
@@ -154,8 +154,8 @@ public class YVMasm extends YVM {
     public void isup() {
     	p.println();
     	p.println("; isup");
-    	p.println("pop ax");
     	p.println("pop bx");
+    	p.println("pop ax");
     	p.println("cmp ax,bx");
     	p.println("jle $+6");
     	p.println("push -1");
@@ -166,8 +166,8 @@ public class YVMasm extends YVM {
     public void iinfegal() {
     	p.println();
     	p.println("; iinfegal");
-    	p.println("pop ax");
     	p.println("pop bx");
+    	p.println("pop ax");
     	p.println("cmp ax,bx");
     	p.println("jg $+6");
     	p.println("push -1");
@@ -178,8 +178,8 @@ public class YVMasm extends YVM {
     public void isupegal() {
     	p.println();
     	p.println("; isupegal");
-    	p.println("pop ax");
     	p.println("pop bx");
+    	p.println("pop ax");
     	p.println("cmp ax,bx");
     	p.println("jl $+6");
     	p.println("push -1");
@@ -190,8 +190,8 @@ public class YVMasm extends YVM {
     public void iegal() {
     	p.println();
     	p.println("; iegal");
-    	p.println("pop bx");
     	p.println("pop ax");
+    	p.println("pop bx");
     	p.println("cmp ax,bx");
     	p.println("jne $+6");
     	p.println("push -1");
@@ -202,8 +202,8 @@ public class YVMasm extends YVM {
     public void idiff() {
     	p.println();
     	p.println("; idiff");
-    	p.println("pop bx");
     	p.println("pop ax");
+    	p.println("pop bx");
     	p.println("cmp ax,bx");
     	p.println("je $+6");
     	p.println("push -1");
