@@ -183,7 +183,8 @@ public class YVM {
 		p.println("FSI" + this.etiquetteSi.pop() + ":");
 	}
 	
-	public void ouvreBloc(int i){
+	public void ouvreBloc(int i, String s){
+		p.println(s + ":");
 		p.println("ouvbloc " + i);
 	}
 	
