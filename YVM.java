@@ -9,7 +9,7 @@ public class YVM {
     private PrintWriter p; // objet pour écrire dans un fichier
     public Yaka yaka;
     private TabIdent tab;
-    //stocke la numérotation des "faire"
+    //stocke la numérotation des "faire" et des "si"
     private Stack<Integer> etiquetteFaire;
     private int nbEtiquette;
     private Stack<Integer> etiquetteSi;
@@ -181,6 +181,27 @@ public class YVM {
 	
 	public void fsi(){
 		p.println("FSI" + this.etiquetteSi.pop() + ":");
+	}
+	
+	public void ouvreBloc(int i, String s){
+		p.println(s + ":");
+		p.println("ouvbloc " + i);
+	}
+	
+	public void fermeBloc(int i){
+		p.println("fermebloc " + i);
+	}
+	
+	public void ireturn(int i){
+		p.println("ireturn " + i);
+	}
+	
+	public void reserveRetour(){
+		p.println("reserveRetour");
+	}
+	
+	public void call(String n){
+		p.println("call " + n);
 	}
 
 }
