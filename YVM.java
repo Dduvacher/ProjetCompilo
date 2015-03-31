@@ -26,6 +26,8 @@ public class YVM {
     	
     	this.etiquetteFaire = new Stack<Integer>();
     	this.nbEtiquette = 0;
+    	this.etiquetteSi = new Stack<Integer>();
+    	this.nbEtiqSi = 0;
     }
     
     //entete et queue
