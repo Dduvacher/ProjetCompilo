@@ -141,10 +141,41 @@ TOKEN  :
 /**************************************/
 void analyse() : {}
 {
-   <PROGRAMME>{exp.entete();} <ident>	
+   <PROGRAMME>{exp.entete();} <ident>
+   (declFonction())*
+   < PRINCIPAL >	
    bloc()
+   < FPRINCIPAL >
    <FPROGRAMME>{exp.queue();}
 }
+
+/*
+*FONCTIONS
+*/
+
+void declFonction() : {}{
+  type() < FONCTION > ident() paramForms() bloc() < FFONCTION >
+}
+
+void paramForms() : {}{
+"("(paramForm() (","paramForm())*)?")"
+}
+
+void paramForm() : {}{
+type() ident()
+}
+
+void retourne() : {}{
+< RETOURNE > expression()
+}
+
+void argumentsFonction() : {}{
+"("(expression() (","expression())*)?")"
+}
+
+/*
+*FIN FONCTION
+*/
 
 void bloc() : {}{
  (declConst())*
@@ -196,7 +227,7 @@ void suiteInstr() :{}
 {
 	instruction() (";"(instruction())?)*}
 
-void instruction() :{}  {	affectation() | lecture() | ecriture()  | iteration() | condition()
+void instruction() :{}  {	affectation() | lecture() | ecriture()  | iteration() | condition() | retourne()
 }
 
 void affectation() :{}
@@ -270,7 +301,7 @@ void valeur () : {}
 { <entier> {exp.empileType('e');
 			exp.ecrireEntier(YakaTokenManager.entierLu);}
  | <ident>{	exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());
-			exp.ecrireIdent(tab.chercheIdent(YakaTokenManager.identLu));}
+			exp.ecrireIdent(tab.chercheIdent(YakaTokenManager.identLu));} (argumentsFonction())?
  | <VRAI>  {exp.empileType('b');
  			exp.ecrireBool(Constante.bool.VRAI);}
  | <FAUX>  {exp.empileType('b');
