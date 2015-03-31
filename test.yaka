@@ -1,19 +1,6 @@
-<<<<<<< HEAD
-PROGRAMME iter1
-VAR ENTIER s,i,n;
-	
-	ECRIRE("n=");
-	LIRE(n);
-	i=1;s=0;
-	TANTQUE i<=n FAIRE
-		s=s+i;
-		i=i+1;
-	FAIT;
-=======
 PROGRAMME max2
 VAR ENTIER i,j,max;
 	LIRE(i);
->>>>>>> a776c0d7286acf90524de3c8159f54b9062a5598
 	ALALIGNE;
 	LIRE(j);
 	ALALIGNE;
