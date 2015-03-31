@@ -16,6 +16,8 @@ public class YVMasm extends YVM {
 	//stocke la numérotation des "faire"
     private Stack<Integer> etiquetteFaire;
     private int nbEtiquette;
+    private Stack<Integer> etiquetteSi;
+    private int nbEtiqSi;
 	
 	//contructeur qui prend en param le nom du fichier dans lequel écrire les instrucions YVM
 	public YVMasm(String fileName, TabIdent tab){
@@ -313,6 +315,28 @@ public class YVMasm extends YVM {
 		p.println("; goto FAIRE" + this.etiquetteFaire.peek());
 		p.println("jmp FAIRE" + this.etiquetteFaire.peek());
 		p.println("FAIT" + this.etiquetteFaire.pop() + ":");
+	}
+	
+	public void si(){
+		this.nbEtiqSi++;
+		this.etiquetteSi.push(this.nbEtiqSi);
+	}
+	
+	public void alors(){
+		p.println("; iffaux SINON" + this.etiquetteSi.peek());
+		p.println("pop ax");
+		p.println("cmp ax,0");
+		p.println("je SINON" + this.etiquetteSi.peek());
+	}
+	
+	public void sinon(){
+		p.println(";goto FSI" + this.etiquetteSi.peek());
+		p.println("jmp FSI" + this.etiquetteSi.peek());
+		p.println("SINON" + this.etiquetteSi.peek() + ":");
+	}
+	
+	public void fsi(){
+		p.println("FSI" + this.etiquetteSi.pop() + ":");
 	}
     
 }
