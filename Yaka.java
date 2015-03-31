@@ -184,6 +184,7 @@ public class Yaka implements YakaConstants {
       }
       jj_consume_token(41);
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case TANTQUE:
       case ECRIRE:
       case LIRE:
       case ALALIGNE:
@@ -208,6 +209,9 @@ public class Yaka implements YakaConstants {
     case ECRIRE:
     case ALALIGNE:
       ecriture();
+      break;
+    case TANTQUE:
+      iteration();
       break;
     default:
       jj_la1[8] = jj_gen;
@@ -271,10 +275,22 @@ public class Yaka implements YakaConstants {
   }
 
 /*
- * Syntaxe des instructions.
+ * Iteration
  */
-//void suiteExpr() : {}
-//{ (expression() (";" (expression())? )*)? }
+  static final public void iteration() throws ParseException {
+    jj_consume_token(TANTQUE);
+             exp.tantQue();
+    expression();
+                                          exp.faire();
+    jj_consume_token(FAIRE);
+    suiteInstr();
+    jj_consume_token(FAIT);
+                                                                                        exp.fait();
+  }
+
+/*
+* Conditionnelle
+*/
 
 
 
@@ -521,7 +537,7 @@ public class Yaka implements YakaConstants {
       jj_la1_init_1();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x80000,0x200,0x0,0x120000,0x0,0x8100,0x0,0x0,0x0,0x1120000,0x0,0x0,0x400000,0x800000,0x1120000,0x120000,0x120000,0x0,0x400000,0x800000,0x1000000,};
+      jj_la1_0 = new int[] {0x80000,0x200,0x0,0x120000,0x0,0x8100,0x0,0x40000,0x40000,0x1120000,0x0,0x0,0x400000,0x800000,0x1120000,0x120000,0x120000,0x0,0x400000,0x800000,0x1000000,};
    }
    private static void jj_la1_init_1() {
       jj_la1_1 = new int[] {0x0,0x0,0x100,0x50,0x100,0x0,0x200,0x47,0x47,0x808d0,0x5,0x3e400,0xc0000,0x300000,0x80850,0x850,0x50,0x3e400,0xc0000,0x300000,0x80000,};

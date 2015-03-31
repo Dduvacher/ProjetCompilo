@@ -196,7 +196,7 @@ void suiteInstr() :{}
 {
 	instruction() (";"(instruction())?)*}
 
-void instruction() :{}  {	affectation() | lecture() | ecriture()
+void instruction() :{}  {	affectation() | lecture() | ecriture()  | iteration()
 }
 
 void affectation() :{}
@@ -217,7 +217,11 @@ void ecriture() :{}
  * Iteration
  */
 void iteration() : {}
-{ <TANT QUE >{exp.tantQue();} expression(){exp.faire();} < FAIRE > suiteInstr() < FAIT >{exp.fait();} }
+{ <TANTQUE >{exp.tantQue();} expression(){exp.faire();} < FAIRE > suiteInstr() < FAIT >{exp.fait();} }
+
+/*
+* Conditionnelle
+*/
 
 
 
@@ -229,7 +233,7 @@ void expression() : {}
   simpleExpr() 
   (opRel() 
   simpleExpr() {exp.OppRel();}
-  )? | iteration()
+  )?
 }
 
 
