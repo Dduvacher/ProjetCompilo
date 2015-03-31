@@ -371,19 +371,27 @@ public class Expression implements Constante{
     //conditionnelle
     
     public void si(){
-    	
+    	this.yvm.si();
+    	this.yvmAsm.si();
     }
     
     public void alors(){
-    	
+    	if(this.pileType.peek() == type.BOOL){
+    		this.yvm.alors();
+    		this.yvmAsm.alors();
+    	}
+    	else
+    		System.out.println("ERREUR : L'expression suivant un \"si\" doit être une expression booléenne");
     }
     
     public void sinon(){
-    	
+    	this.yvm.sinon();
+    	this.yvmAsm.sinon();
     }
     
     public void fsi(){
-    	
+    	this.yvm.fsi();
+    	this.yvmAsm.fsi();
     }
     
 }
