@@ -12,6 +12,14 @@ public class IdVar extends Ident implements Constante {
     	return true;
     }
     
+    public boolean estFonction() {
+		return false;
+	}
+    
+    public boolean estParametre() {
+		return false;
+	}
+    
     public boolean equals(Ident id){
     	return (id.estVariable() && this.offset == id.getValeur());
     }
@@ -19,5 +27,7 @@ public class IdVar extends Ident implements Constante {
     public int getValeur(){
     	return this.offset;
     }
+
+	
 
 }

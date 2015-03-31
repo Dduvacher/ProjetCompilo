@@ -13,6 +13,10 @@ public abstract class Ident implements Constante{
 
     public abstract boolean estVariable();
     
+    public abstract boolean estFonction();
+    
+    public abstract boolean estParametre();
+    
     public abstract int getValeur();
     
     public type getType(){
