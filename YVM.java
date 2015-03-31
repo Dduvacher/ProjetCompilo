@@ -26,6 +26,8 @@ public class YVM {
     	
     	this.etiquetteFaire = new Stack<Integer>();
     	this.nbEtiquette = 0;
+    	this.etiquetteSi = new Stack<Integer>();
+    	this.nbEtiqSi = 0;
     }
     
     //entete et queue
@@ -166,19 +168,19 @@ public class YVM {
 	public void si(){
 		this.nbEtiqSi++;
 		this.etiquetteSi.push(this.nbEtiqSi);
+	}
+	
+	public void alors(){
 		p.println("iffaux SINON" + this.etiquetteSi.peek());
 	}
 	
 	public void sinon(){
+		p.println("goto FSI" + this.etiquetteSi.peek());
 		p.println("SINON" + this.etiquetteSi.peek() + ":");
 	}
 	
 	public void fsi(){
 		p.println("FSI" + this.etiquetteSi.pop() + ":");
-	}
-	
-	public void alors(){
-		
 	}
 
 }
