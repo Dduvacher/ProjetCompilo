@@ -12,6 +12,8 @@ public class YVM {
     //stocke la numérotation des "faire"
     private Stack<Integer> etiquetteFaire;
     private int nbEtiquette;
+    private Stack<Integer> etiquetteSi;
+    private int nbEtiqSi;
     
     //contructeur qui prend en param le nom du fichier dans lequel écrire les instrucions YVM
     public YVM(String fileName, TabIdent tab){
@@ -158,6 +160,22 @@ public class YVM {
 	
 	public void fait(){
 		p.println("goto FAIRE" + this.etiquetteFaire.pop());
+	}
+	
+	public void si(){
+		
+	}
+	
+	public void sinon(){
+		
+	}
+	
+	public void fsi(){
+		
+	}
+	
+	public void alors(){
+		
 	}
 
 }
