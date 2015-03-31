@@ -196,7 +196,7 @@ void suiteInstr() :{}
 {
 	instruction() (";"(instruction())?)*}
 
-void instruction() :{}  {	affectation() | lecture() | ecriture()  | iteration()
+void instruction() :{}  {	affectation() | lecture() | ecriture()  | iteration() | condition()
 }
 
 void affectation() :{}
@@ -223,7 +223,9 @@ void iteration() : {}
 * Conditionnelle
 */
 
-
+void condition() : {}
+{< SI >{exp.si();} expression(){exp.alors();} <ALORS > suiteInstr(){exp.sinon();} (< SINON > suiteInstr())? < FSI >{exp.fsi();}
+}
 
 /*
  * Expression .

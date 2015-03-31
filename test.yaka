@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 PROGRAMME iter1
 VAR ENTIER s,i,n;
 	
@@ -8,7 +9,17 @@ VAR ENTIER s,i,n;
 		s=s+i;
 		i=i+1;
 	FAIT;
+=======
+PROGRAMME max2
+VAR ENTIER i,j,max;
+	LIRE(i);
+>>>>>>> a776c0d7286acf90524de3c8159f54b9062a5598
 	ALALIGNE;
-	ECRIRE("s=");
-	ECRIRE(s);
+	LIRE(j);
+	ALALIGNE;
+	max=j;
+	SI i>j ALORS
+		max=i;
+	FSI;
+	ECRIRE(max);
 FPROGRAMME
