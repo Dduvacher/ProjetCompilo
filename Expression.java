@@ -343,8 +343,20 @@ public class Expression implements Constante{
     		yvmAsm.istore(id.getValeur());
     	}
     	else {
-    		System.out.println("ERREUR : La valeur en sommet de pile n'est pas d'un type compatible avec le type de l'IDENT donné.");
+    		System.out.println("ERREUR : La valeur en sommet de pile n'est pas d'un type compatible avec le type de l'IDENT donnï¿½.");
     	}
+    }
+    
+    public void tantQue(){
+    	
+    }
+    
+    public void faire(){
+    	
+    }
+    
+    public void fait(){
+    	
     }
 
 }
