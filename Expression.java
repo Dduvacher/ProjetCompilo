@@ -347,6 +347,8 @@ public class Expression implements Constante{
     	}
     }
     
+    //itération
+    
     public void tantQue(){
     	this.yvm.tantQue();
     	this.yvmAsm.tantQue();
@@ -365,5 +367,23 @@ public class Expression implements Constante{
     	this.yvm.fait();
     	this.yvmAsm.fait();
     }
-
+    
+    //conditionnelle
+    
+    public void si(){
+    	
+    }
+    
+    public void alors(){
+    	
+    }
+    
+    public void sinon(){
+    	
+    }
+    
+    public void fsi(){
+    	
+    }
+    
 }
