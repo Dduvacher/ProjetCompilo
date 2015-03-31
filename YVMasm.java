@@ -340,5 +340,32 @@ public class YVMasm extends YVM {
 	public void fsi(){
 		p.println("FSI" + this.etiquetteSi.pop() + ":");
 	}
+	
+	public void ouvreBloc(int i){
+		p.println("; ouvbloc " + i);
+		p.println("enter " + i + ",0");
+	}
+	
+	public void fermeBloc(int i){
+		p.println("; fermebloc " + i);
+		p.println("leave");
+		p.println("ret " + i);
+	}
+	
+	public void ireturn(int i){
+		p.println("; ireturn " + i);
+		p.println("pop ax");
+		p.println("mov [bp+" + i + "],ax");
+	}
+	
+	public void reserveRetour(){
+		p.println("; reserveRetour");
+		p.println("sub sp,2");
+	}
+	
+	public void call(String n){
+		p.println("; call " + n);
+		p.println("call " + n);
+	}
     
 }
