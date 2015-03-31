@@ -159,19 +159,22 @@ public class YVM {
 	}
 	
 	public void fait(){
-		p.println("goto FAIRE" + this.etiquetteFaire.pop());
+		p.println("goto FAIRE" + this.etiquetteFaire.peek());
+		p.println("FAIT" + this.etiquetteFaire.pop() + ":");
 	}
 	
 	public void si(){
-		
+		this.nbEtiqSi++;
+		this.etiquetteSi.push(this.nbEtiqSi);
+		p.println("iffaux SINON" + this.etiquetteSi.peek());
 	}
 	
 	public void sinon(){
-		
+		p.println("SINON" + this.etiquetteSi.peek() + ":");
 	}
 	
 	public void fsi(){
-		
+		p.println("FSI" + this.etiquetteSi.pop() + ":");
 	}
 	
 	public void alors(){

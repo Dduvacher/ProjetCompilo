@@ -311,7 +311,8 @@ public class YVMasm extends YVM {
 	
 	public void fait(){
 		p.println("; goto FAIRE" + this.etiquetteFaire.peek());
-		p.println("jmp FAIRE" + this.etiquetteFaire.pop());
+		p.println("jmp FAIRE" + this.etiquetteFaire.peek());
+		p.println("FAIT" + this.etiquetteFaire.pop() + ":");
 	}
     
 }
