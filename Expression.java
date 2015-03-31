@@ -348,15 +348,22 @@ public class Expression implements Constante{
     }
     
     public void tantQue(){
-    	
+    	this.yvm.tantQue();
+    	this.yvmAsm.tantQue();
     }
     
     public void faire(){
-    	
+    	if(this.pileType.peek() == type.BOOL){
+    		this.yvm.faire();
+    		this.yvmAsm.faire();
+    	}
+    	else
+    		System.out.println("ERREUR : L'expression suivant un \"tant que\" doit être une expression booléenne");
     }
     
     public void fait(){
-    	
+    	this.yvm.fait();
+    	this.yvmAsm.fait();
     }
 
 }
