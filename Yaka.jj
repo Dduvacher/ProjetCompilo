@@ -154,7 +154,7 @@ void analyse() : {}
 */
 
 void declFonction() : {}{
-  type() < FONCTION > ident() paramForms() bloc() < FFONCTION >
+  type() < FONCTION > < ident >{dec.identLu=YakaTokenManager.identLu;} paramForms(){dec.placerParam(tab);dec.placerFonct(tab);} bloc() < FFONCTION >{exp.fermeBloc();}
 }
 
 void paramForms() : {}{
@@ -162,11 +162,11 @@ void paramForms() : {}{
 }
 
 void paramForm() : {}{
-type() ident()
+type(){dec.empileType(YakaTokenManager.identLu);dec.paramType.add(dec.typeLu);} < ident >{dec.nomStack.push(YakaTokenManager.identLu);}
 }
 
 void retourne() : {}{
-< RETOURNE > expression()
+< RETOURNE > expression(){exp.iretourne(tab);}
 }
 
 void argumentsFonction() : {}{
@@ -198,7 +198,7 @@ void defConst() : {}
 
 void valConst() : {}{
   <entier> {dec.placerConst(dec.identLu,YakaTokenManager.entierLu,Constante.type.ENTIER,tab);}
- | <ident>	{dec.placerConst(dec.identLu,tab.chercheIdent(YakaTokenManager.identLu).getValeur(),tab.chercheIdent(YakaTokenManager.identLu).getType(),tab);}	
+ | <ident>	{dec.placerConst(dec.identLu,tab.chercheIdentLocaux(YakaTokenManager.identLu).getValeur(),tab.chercheIdentLocaux(YakaTokenManager.identLu).getType(),tab);}	
  | <VRAI> 	{dec.placerConst(dec.identLu,/*Constante.bool.VRAI*/-1,Constante.type.BOOL,tab);}	
  | <FAUX> 	{dec.placerConst(dec.identLu,/*Constante.bool.VRAI*/0,Constante.type.BOOL,tab);}	
 }
@@ -207,9 +207,9 @@ void valConst() : {}{
 void declVar() : {}
 {
   <VAR> type()	
-  <ident> {dec.placerVariable(YakaTokenManager.identLu,tab.iterateur,dec.typeLu,tab);}	
+  <ident> {dec.placerVariable(YakaTokenManager.identLu,tab.iterateurVariable,dec.typeLu,tab);}	
   ("," 
-      <ident> {dec.placerVariable(YakaTokenManager.identLu,tab.iterateur,dec.typeLu,tab);} 
+      <ident> {dec.placerVariable(YakaTokenManager.identLu,tab.iterateurVariable,dec.typeLu,tab);} 
   )* ";"
 	
 }
@@ -231,12 +231,12 @@ void instruction() :{}  {	affectation() | lecture() | ecriture()  | iteration(
 }
 
 void affectation() :{}
-{	<ident>{exp.idLu=YakaTokenManager.identLu;} "=" expression(){exp.affecter(tab.chercheIdent(exp.idLu));}
+{	<ident>{exp.idLu=YakaTokenManager.identLu;} "=" expression(){exp.affecter(tab.chercheIdentLocaux(exp.idLu));}
 }
 
 void lecture() :{}
 {
-	< LIRE >"("<ident>")" {exp.lire(tab.chercheIdent(YakaTokenManager.identLu));}
+	< LIRE >"("<ident>")" {exp.lire(tab.chercheIdentLocaux(YakaTokenManager.identLu));}
 }
 
 
@@ -300,8 +300,9 @@ void primaire (): {}
 void valeur () : {}
 { <entier> {exp.empileType('e');
 			exp.ecrireEntier(YakaTokenManager.entierLu);}
- | <ident>{	exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());
-			exp.ecrireIdent(tab.chercheIdent(YakaTokenManager.identLu));} (argumentsFonction())?
+ | <ident>{	exp.empileType(tab.chercheIdentLocaux(YakaTokenManager.identLu).getTypeToChar());
+			exp.ecrireIdent(tab.chercheIdentLocaux(YakaTokenManager.identLu));
+			exp.idLu=YakaTokenManager.identLu;} (argumentsFonction(){exp.call(tab,idLu);})?
  | <VRAI>  {exp.empileType('b');
  			exp.ecrireBool(Constante.bool.VRAI);}
  | <FAUX>  {exp.empileType('b');

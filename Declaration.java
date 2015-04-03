@@ -65,5 +65,16 @@ public class Declaration implements Constante {
     		}
     	}
     }
+    
+    public void empileType(String s) {
+    	switch(s){
+    		case "BOOLEEN":
+    			this.typeStack.push(type.BOOL);
+    			break;
+    		case "ENTIER":
+    			this.typeStack.push(type.ENTIER);
+    			break;
+    	}
+    }
 
 }
