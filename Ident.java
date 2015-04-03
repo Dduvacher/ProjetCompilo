@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 public abstract class Ident implements Constante{
@@ -18,6 +20,14 @@ public abstract class Ident implements Constante{
     public abstract boolean estParametre();
     
     public abstract int getValeur();
+    
+    public ArrayList<type> getParametres(){
+    	return new ArrayList<type>();
+    }
+    
+    public type getResultat(){
+    	return type.ERREUR;
+    }
     
     public type getType(){
     	return this.type;

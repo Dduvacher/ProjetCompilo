@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Stack;
 
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
@@ -397,6 +398,38 @@ public class Expression implements Constante{
     public void fermeBloc(){
     	yvm.fermeBloc();
     	yvmAsm.fermeBloc();
+    }
+    
+    public void call(TabIdent tab, String n){
+    	if (!tab.existeIdentGlobaux(n)){
+    		System.out.println("ERREUR: La fonction n'existe pas.");
+    	}
+    	else {
+    		ArrayList<type> parametres = tab.chercheIdentGlobaux(n).getParametres();
+    		int nbParam = parametres.size();
+    		boolean erreur = false;
+    		for (int i = nbParam-1; i >= 0; i--){
+    			if (pileType.pop() != parametres.get(i)){
+    				System.out.println("ERREUR: Le paramètre n°" + i + " donné n'a pas le bon type.");
+    				erreur = true;
+    			}
+    		}
+    		if (erreur){
+    			pileType.push(type.ERREUR);
+    		}
+    		else {
+        		pileType.push(tab.chercheIdentGlobaux(n).getResultat());
+            	yvm.reserveRetour();
+            	yvmAsm.reserveRetour();
+        		yvm.call(n);
+            	yvmAsm.call(n);
+    		}
+    	}
+    }
+    
+    public void ireturn (TabIdent tab){
+    	yvm.ireturn(tab.getIterateurParametre());
+    	yvmAsm.ireturn(tab.getIterateurParametre());
     }
     
 }
