@@ -20,6 +20,10 @@ public class IdConst extends Ident implements Constante {
 		return false;
 	}
     
+    public boolean estConstante(){
+    	return true;
+    }
+    
     public boolean equals(Ident id){
     	return (!id.estVariable() && this.valeur == id.getValeur());
     }

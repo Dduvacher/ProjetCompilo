@@ -58,6 +58,8 @@ public class Declaration implements Constante {
     public void placerParam(TabIdent tab){
     	while (!typeStack.isEmpty()){
     		if(tab.existeIdentLocaux(nomStack.peek())){
+    			nomStack.pop();
+    			typeStack.pop();
     			System.out.println("ERREUR: Les paramètres doivent avoir des noms différents.");
     		}
     		else {

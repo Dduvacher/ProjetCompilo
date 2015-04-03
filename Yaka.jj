@@ -154,7 +154,7 @@ void analyse() : {}
 */
 
 void declFonction() : {}{
-  type() < FONCTION > < ident >{dec.identLu=YakaTokenManager.identLu;} paramForms(){dec.placerParam(tab);dec.placerFonct(tab);} bloc() < FFONCTION >{exp.fermeBloc();}
+  type() < FONCTION > < ident >{dec.identLu=YakaTokenManager.identLu;} paramForms(){dec.placerParam(tab);dec.placerFonct(tab);} bloc() < FFONCTION >{exp.fermeBloc(tab);}
 }
 
 void paramForms() : {}{
@@ -162,15 +162,15 @@ void paramForms() : {}{
 }
 
 void paramForm() : {}{
-type(){dec.empileType(YakaTokenManager.identLu);dec.paramType.add(dec.typeLu);} < ident >{dec.nomStack.push(YakaTokenManager.identLu);}
+type(){dec.typeStack.push(dec.typeLu);dec.paramType.add(dec.typeLu);} < ident >{dec.nomStack.push(YakaTokenManager.identLu);}
 }
 
 void retourne() : {}{
-< RETOURNE > expression(){exp.iretourne(tab);}
+< RETOURNE > expression(){exp.ireturn(tab);}
 }
 
 void argumentsFonction() : {}{
-"("(expression() (","expression())*)?")"
+"("{exp.call(tab,exp.nomFonction);}(expression() (","expression())*)?")"
 }
 
 /*
@@ -300,9 +300,9 @@ void primaire (): {}
 void valeur () : {}
 { <entier> {exp.empileType('e');
 			exp.ecrireEntier(YakaTokenManager.entierLu);}
- | <ident>{	exp.empileType(tab.chercheIdentLocaux(YakaTokenManager.identLu).getTypeToChar());
-			exp.ecrireIdent(tab.chercheIdentLocaux(YakaTokenManager.identLu));
-			exp.idLu=YakaTokenManager.identLu;} (argumentsFonction(){exp.call(tab,idLu);})?
+ | <ident>{	exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());
+			exp.ecrireIdent(tab.chercheIdent(YakaTokenManager.identLu));
+			exp.nomFonction=YakaTokenManager.identLu;} (argumentsFonction())?
  | <VRAI>  {exp.empileType('b');
  			exp.ecrireBool(Constante.bool.VRAI);}
  | <FAUX>  {exp.empileType('b');

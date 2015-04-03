@@ -19,6 +19,8 @@ public abstract class Ident implements Constante{
     
     public abstract boolean estParametre();
     
+    public boolean estConstante(){return false;}
+    
     public abstract int getValeur();
     
     public ArrayList<type> getParametres(){

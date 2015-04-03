@@ -10,6 +10,7 @@ public class Expression implements Constante{
     private YVM yvm;
     private YVMasm yvmAsm;
     public String idLu;
+    public String nomFonction;
     
     public Expression(YVM yvm, YVMasm yvmAsm){
     	this.yvm = yvm;
@@ -260,7 +261,7 @@ public class Expression implements Constante{
     	if(t == null)
     		System.out.println("ERREUR : utilisation d'un ident non déclaré");
     	else{
-    		if(t.estVariable()){
+    		if(t.estVariable() || t.estParametre()){
     			this.yvm.iload(t.getValeur());
     			this.yvmAsm.iload(t.getValeur());
     		}
@@ -336,7 +337,7 @@ public class Expression implements Constante{
     }
     
     public void affecter(Ident id){
-    	if (id.estVariable() == false){
+    	if (id.estConstante()){
     		System.out.println("ERREUR : On ne peut pas modifier une constante.");
     	}
     	else if (pileType.peek() == id.getType()){
@@ -395,14 +396,15 @@ public class Expression implements Constante{
     	this.yvmAsm.fsi();
     }
     
-    public void fermeBloc(){
+    public void fermeBloc(TabIdent t){
     	yvm.fermeBloc();
     	yvmAsm.fermeBloc();
+    	t.viderLocaux();
     }
     
     public void call(TabIdent tab, String n){
     	if (!tab.existeIdentGlobaux(n)){
-    		System.out.println("ERREUR: La fonction n'existe pas.");
+    		System.out.println("ERREUR: La fonction n'existe pas."+n);
     	}
     	else {
     		ArrayList<type> parametres = tab.chercheIdentGlobaux(n).getParametres();

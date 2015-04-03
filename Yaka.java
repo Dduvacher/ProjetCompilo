@@ -75,6 +75,7 @@ public class Yaka implements YakaConstants {
                                                                                     dec.placerParam(tab);dec.placerFonct(tab);
     bloc();
     jj_consume_token(FFONCTION);
+                                                                                                                                                     exp.fermeBloc(tab);
   }
 
   static final public void paramForms() throws ParseException {
@@ -106,18 +107,20 @@ public class Yaka implements YakaConstants {
 
   static final public void paramForm() throws ParseException {
     type();
-       dec.empileType(YakaTokenManager.identLu);dec.paramType.add(dec.typeLu);
+       dec.typeStack.push(dec.typeLu);dec.paramType.add(dec.typeLu);
     jj_consume_token(ident);
-                                                                                          dec.nomStack.push(YakaTokenManager.identLu);
+                                                                                dec.nomStack.push(YakaTokenManager.identLu);
   }
 
   static final public void retourne() throws ParseException {
     jj_consume_token(RETOURNE);
     expression();
+                          exp.ireturn(tab);
   }
 
   static final public void argumentsFonction() throws ParseException {
     jj_consume_token(40);
+    exp.call(tab,exp.nomFonction);
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case VRAI:
     case FAUX:
@@ -536,8 +539,9 @@ public class Yaka implements YakaConstants {
       break;
     case ident:
       jj_consume_token(ident);
-                exp.empileType(tab.chercheIdentLocaux(YakaTokenManager.identLu).getTypeToChar());
-                        exp.ecrireIdent(tab.chercheIdentLocaux(YakaTokenManager.identLu));
+                exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());
+                        exp.ecrireIdent(tab.chercheIdent(YakaTokenManager.identLu));
+                        exp.nomFonction=YakaTokenManager.identLu;
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
       case 40:
         argumentsFonction();
