@@ -40,6 +40,8 @@ public abstract class Ident implements Constante{
     	case BOOL: return 'b';
     	case ENTIER: return 'e';
     	case ERREUR: return 'r';
+    	case FONCTION: return 'f';
+    	case PARAMETRE: return 'p';
     	default: return 'r';
     	}
     }

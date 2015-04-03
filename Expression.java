@@ -253,6 +253,12 @@ public class Expression implements Constante{
     		case 'r':
     			this.pileType.push(type.ERREUR);
     			break;
+    		case 'f':
+    			this.pileType.push(type.FONCTION);
+    			break;
+    		case 'p':
+    			this.pileType.push(type.PARAMETRE);
+    			break;
     	}
     }
     	
@@ -409,6 +415,7 @@ public class Expression implements Constante{
     	else {
     		ArrayList<type> parametres = tab.chercheIdentGlobaux(n).getParametres();
     		int nbParam = parametres.size();
+    		pileType.pop(); /*changement ici voir si c bon*/
     		boolean erreur = false;
     		for (int i = nbParam-1; i >= 0; i--){
     			if (pileType.pop() != parametres.get(i)){
