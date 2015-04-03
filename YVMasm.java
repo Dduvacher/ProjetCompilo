@@ -55,9 +55,9 @@ public class YVMasm extends YVM {
     
     public void ouvrePrinc(){
     	p.println();
-    	p.println("; ouvrePrinc " + (this.tab.getIterateur()+2)*-1);
+    	p.println("; ouvrePrinc " + (this.tab.getIterateurVariable()+2)*-1);
     	p.println("mov bp,sp");
-    	p.println("sub sp," + (this.tab.getIterateur()+2)*-1);
+    	p.println("sub sp," + (this.tab.getIterateurVariable()+2)*-1);
     }
     
     public void queue(){
@@ -341,15 +341,16 @@ public class YVMasm extends YVM {
 		p.println("FSI" + this.etiquetteSi.pop() + ":");
 	}
 	
-	public void ouvreBloc(int i){
-		p.println("; ouvbloc " + i);
-		p.println("enter " + i + ",0");
+	public void ouvreBloc(String s){
+		p.println(s + ":");
+		p.println("; ouvbloc " + this.tab.getIterateurVariable());
+		p.println("enter " + this.tab.getIterateurVariable() + ",0");
 	}
 	
-	public void fermeBloc(int i){
-		p.println("; fermebloc " + i);
+	public void fermeBloc(){
+		p.println("; fermebloc " + (this.tab.getIterateurParametre()-4));
 		p.println("leave");
-		p.println("ret " + i);
+		p.println("ret " + (this.tab.getIterateurParametre()-4));
 	}
 	
 	public void ireturn(int i){

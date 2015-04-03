@@ -36,7 +36,7 @@ public class YVM {
     }
     
     public void ouvrePrinc(){
-    	p.println("ouvrePrinc " + (this.tab.getIterateur()+2)*-1);
+    	p.println("ouvrePrinc " + (this.tab.getIterateurVariable()+2)*-1);
     }
     
     public void queue(){
@@ -183,13 +183,13 @@ public class YVM {
 		p.println("FSI" + this.etiquetteSi.pop() + ":");
 	}
 	
-	public void ouvreBloc(int i, String s){
+	public void ouvreBloc(String s){
 		p.println(s + ":");
-		p.println("ouvbloc " + i);
+		p.println("ouvbloc " + this.tab.getIterateurVariable());
 	}
 	
-	public void fermeBloc(int i){
-		p.println("fermebloc " + i);
+	public void fermeBloc(){
+		p.println("fermebloc " + (this.tab.getIterateurParametre()-4));
 	}
 	
 	public void ireturn(int i){

@@ -394,4 +394,9 @@ public class Expression implements Constante{
     	this.yvmAsm.fsi();
     }
     
+    public void fermeBloc(){
+    	yvm.fermeBloc();
+    	yvmAsm.fermeBloc();
+    }
+    
 }
