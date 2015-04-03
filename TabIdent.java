@@ -6,13 +6,13 @@ import java.util.HashMap;
 public class TabIdent {
     private HashMap<String, Ident> globaux;
     private HashMap<String, Ident> locaux;
-    public int iterateur=-2;
-    public int pointeurLocaux = 0;
+    public int iterateurVariable = -2;
+    public int iterateurParametre = 4;
 
     public Yaka yaka;
 
     public TabIdent() {
-    	this.globaux = new HashMap<String, Ident>();
+    	this.globaux = new HashMap<String, Ident>(); //ne contient que les fonctions
     	this.locaux = new HashMap<String, Ident>();
     }
 
@@ -40,24 +40,29 @@ public class TabIdent {
 
     public void rangeIdentGlobaux(String clef, Ident id) {
     	this.globaux.put(clef, id);
-    	if(id.estVariable()){
-    		iterateur-=2;
-    	}
     }
     
     public void rangeIdentLocaux(String clef, Ident id) {
     	this.locaux.put(clef, id);
     	if(id.estVariable()){
-    		iterateur-=2;
+    		this.iterateurVariable -= 2;
     	}
+    	else if (id.estParametre())
+    		this.iterateurParametre += 2;
     }
     
-    public int getIterateur(){
-    	return this.iterateur;
+    public int getIterateurVariable(){
+    	return this.iterateurVariable;
+    }
+    
+    public int getIterateurParametre(){
+    	return this.iterateurParametre;
     }
     
     public void viderLocaux(){
     	this.locaux.clear();
+    	this.iterateurVariable = -2;
+    	this.iterateurParametre = 4;
     }
     
     public String toString(){

@@ -3,10 +3,10 @@ import java.util.ArrayList;
 
 public class IdFonct extends Ident implements Constante{
     
-	private IdVar resultat;
-	private ArrayList<IdParam> parametres;
+	private type resultat;
+	private ArrayList<type> parametres;
 	
-    public IdFonct(type type, IdVar res, ArrayList<IdParam> param){
+    public IdFonct(type type, type res, ArrayList<type> param){
     	super(type);
     	this.resultat = res;
     	this.parametres = param;
@@ -32,11 +32,11 @@ public class IdFonct extends Ident implements Constante{
     	return 0; //valeur bidon
     }
     
-    public IdVar getResultat(){
+    public type getResultat(){
     	return this.resultat;
     }
     
-    public ArrayList<IdParam> getParametres(){
+    public ArrayList<type> getParametres(){
     	return this.parametres;
     }
 }

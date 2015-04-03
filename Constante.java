@@ -2,7 +2,7 @@
 /*test*/
 public interface Constante {
     
-    enum type {BOOL, ENTIER, ERREUR};
+    enum type {BOOL, ENTIER, FONCTION, PARAMETRE, ERREUR};
     enum bool {VRAI,FAUX};
 
 }
