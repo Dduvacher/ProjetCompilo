@@ -11,6 +11,7 @@ public class Declaration implements Constante {
     public ArrayList<type> paramType;
     public Stack<type> typeStack;
     public Stack<String> nomStack;
+    public type typeFonct;
     
     public Declaration (YVM yvm, YVMasm asm){
     	this.yvm = yvm;
@@ -48,11 +49,10 @@ public class Declaration implements Constante {
     		System.out.println("ERREUR: Nom fonction déjà utilisé.");
     	}
     	else {
-    		tab.rangeIdentGlobaux(identLu, new IdFonct(type.FONCTION, typeLu, paramType));
-    		yvm.ouvreBloc(identLu);
-    		asm.ouvreBloc(identLu);
+    		tab.rangeIdentGlobaux(identLu, new IdFonct(type.FONCTION, typeFonct, paramType));
     	}
-    	
+    yvm.ecrireFonction(identLu);
+    asm.ecrireFonction(identLu);
     }
     
     public void placerParam(TabIdent tab){
@@ -68,7 +68,7 @@ public class Declaration implements Constante {
     	}
     }
     
-    public void empileType(String s) {
+   /* public void empileType(String s) {
     	switch(s){
     		case "BOOLEEN":
     			this.typeStack.push(type.BOOL);
@@ -77,6 +77,6 @@ public class Declaration implements Constante {
     			this.typeStack.push(type.ENTIER);
     			break;
     	}
-    }
+    }*/
 
 }

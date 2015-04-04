@@ -27,14 +27,14 @@ public class TabIdent {
     public Ident chercheIdentGlobaux(String clef) /*throws ParseException */{
     	if(this.existeIdentGlobaux(clef)){
     		return this.globaux.get(clef);}
-    	System.out.println("ERREUR: Ident doesn't exist ( globaux )"+clef);
+    	System.out.println("ERREUR: Ident doesn't exist ( globaux )");
     	return new IdConst(Constante.type.ERREUR,42);
     }
     
     public Ident chercheIdentLocaux(String clef) /*throws ParseException */{
     	if(this.existeIdentLocaux(clef)){
     		return this.locaux.get(clef);}
-    	System.out.println("ERREUR: Ident doesn't exist ( locaux )"+clef);
+    	System.out.println("ERREUR: Ident doesn't exist ( locaux )");
     	return new IdConst(Constante.type.ERREUR,42);
     }
 
@@ -47,13 +47,10 @@ public class TabIdent {
     }
 
     public void rangeIdentGlobaux(String clef, Ident id) {
-    	System.out.println(this);
     	this.globaux.put(clef, id);
     }
     
     public void rangeIdentLocaux(String clef, Ident id) {
-    	System.out.println(this);
-    	System.out.println(clef);
     	this.locaux.put(clef, id);
     	if(id.estVariable()){
     		this.iterateurVariable -= 2;
@@ -71,7 +68,6 @@ public class TabIdent {
     }
     
     public void viderLocaux(){
-    	System.out.println(this);
     	this.locaux.clear();
     	this.iterateurVariable = -2;
     	this.iterateurParametre = 4;

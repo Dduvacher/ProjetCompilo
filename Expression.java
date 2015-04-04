@@ -10,13 +10,14 @@ public class Expression implements Constante{
     private YVM yvm;
     private YVMasm yvmAsm;
     public String idLu;
-    public String nomFonction;
+    public Stack<String> nomFonctions;
     
     public Expression(YVM yvm, YVMasm yvmAsm){
     	this.yvm = yvm;
     	this.yvmAsm = yvmAsm;
     	this.pileOp = new Stack<Character>();
     	this.pileType = new Stack<type>();
+    	this.nomFonctions= new Stack<String>();
     }
     
     public void entete(){
@@ -271,7 +272,7 @@ public class Expression implements Constante{
     			this.yvm.iload(t.getValeur());
     			this.yvmAsm.iload(t.getValeur());
     		}
-    		else {
+    		else if(!t.estFonction()){
     			this.yvm.iconst(t.getValeur());
     			this.yvmAsm.iconst(t.getValeur());
     		}
@@ -337,9 +338,14 @@ public class Expression implements Constante{
     }
     
     
-    public void ouvrePrinc(){
-    	this.yvm.ouvrePrinc();
-    	this.yvmAsm.ouvrePrinc();
+    public void ouvreBloc(){
+		yvm.ouvreBloc();
+		yvmAsm.ouvreBloc();
+    }
+    
+    public void ecrireMain(){
+    	yvm.ecrireMain();
+    	yvmAsm.ecrireMain();
     }
     
     public void affecter(Ident id){
@@ -347,6 +353,7 @@ public class Expression implements Constante{
     		System.out.println("ERREUR : On ne peut pas modifier une constante.");
     	}
     	else if (pileType.peek() == id.getType()){
+    		System.out.println(id.getType());
     		yvm.istore(id.getValeur());
     		yvmAsm.istore(id.getValeur());
     	}
@@ -409,16 +416,18 @@ public class Expression implements Constante{
     }
     
     public void call(TabIdent tab, String n){
+    	System.out.println(pileType);
     	if (!tab.existeIdentGlobaux(n)){
     		System.out.println("ERREUR: La fonction n'existe pas."+n);
     	}
     	else {
     		ArrayList<type> parametres = tab.chercheIdentGlobaux(n).getParametres();
-    		int nbParam = parametres.size();
-    		pileType.pop(); /*changement ici voir si c bon*/
+    		int nbParam = parametres.size(); /*changement ici voir si c bon*/
     		boolean erreur = false;
     		for (int i = nbParam-1; i >= 0; i--){
-    			if (pileType.pop() != parametres.get(i)){
+    			System.out.println(pileType.peek());
+    			if (pileType.peek() != parametres.get(i)){
+    				pileType.pop();
     				System.out.println("ERREUR: Le paramètre n°" + i + " donné n'a pas le bon type.");
     				erreur = true;
     			}
@@ -428,12 +437,16 @@ public class Expression implements Constante{
     		}
     		else {
         		pileType.push(tab.chercheIdentGlobaux(n).getResultat());
-            	yvm.reserveRetour();
-            	yvmAsm.reserveRetour();
+        		System.out.println(tab.chercheIdentGlobaux(n).getResultat()+n);
         		yvm.call(n);
             	yvmAsm.call(n);
     		}
     	}
+    }
+    
+    public void reserveRetour(){
+    	yvm.reserveRetour();
+    	yvmAsm.reserveRetour();
     }
     
     public void ireturn (TabIdent tab){

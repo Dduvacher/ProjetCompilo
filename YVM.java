@@ -104,12 +104,16 @@ public class YVM {
     
     //instructions de stockage et de chargement
     public void iload(int i) {
-    	p.println("iload" + i);
+    	p.println("iload " + i);
     }
     public void istore(int i) {
     	p.println("istore " + i);
     }
 
+    public void ecrireMain(){
+    	p.println("main:");
+    }
+    
     public void iconst(int i) {
     	p.println("iconst " + i);
     }
@@ -183,9 +187,12 @@ public class YVM {
 		p.println("FSI" + this.etiquetteSi.pop() + ":");
 	}
 	
-	public void ouvreBloc(String s){
-		p.println(s + ":");
-		p.println("ouvbloc " + this.tab.getIterateurVariable());
+	public void ouvreBloc(){
+		p.println("ouvbloc " + (this.tab.getIterateurVariable()+2)*-1);
+	}
+	
+	public void ecrireFonction(String s){
+		p.println(s+":");
 	}
 	
 	public void fermeBloc(){

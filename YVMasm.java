@@ -53,6 +53,10 @@ public class YVMasm extends YVM {
     	p.println("STARTUPCODE");
     }
     
+    public void ecrireMain(){
+    	p.println("main:");
+    }
+    
     public void ouvrePrinc(){
     	p.println();
     	p.println("; ouvrePrinc " + (this.tab.getIterateurVariable()+2)*-1);
@@ -218,7 +222,7 @@ public class YVMasm extends YVM {
     //instructions de stockage et de chargement
     public void iload(int i) {
     	p.println();
-    	p.println("; iload" + i);
+    	p.println("; iload " + i);
     	p.println("push word ptr[bp" + i +"]");
     }
     
@@ -257,6 +261,10 @@ public class YVMasm extends YVM {
     	p.println("mov bp,sp");
     	p.println("sub sp," + i);
     }
+    
+	public void ecrireFonction(String s){
+		p.println(s+":");
+	}
     
     //entrées sorties
     public void ecrireEnt(){

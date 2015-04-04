@@ -57,6 +57,7 @@ public class Yaka implements YakaConstants {
       declFonction();
     }
     jj_consume_token(PRINCIPAL);
+                 exp.ecrireMain();
     bloc();
     jj_consume_token(FPRINCIPAL);
     jj_consume_token(FPROGRAMME);
@@ -68,14 +69,15 @@ public class Yaka implements YakaConstants {
 */
   static final public void declFonction() throws ParseException {
     type();
+         dec.typeFonct=dec.typeLu;
     jj_consume_token(FONCTION);
     jj_consume_token(ident);
-                                dec.identLu=YakaTokenManager.identLu;
+                                                           dec.identLu=YakaTokenManager.identLu;
     paramForms();
-                                                                                    dec.placerParam(tab);dec.placerFonct(tab);
+                                                                                                               dec.placerParam(tab);dec.placerFonct(tab);
     bloc();
     jj_consume_token(FFONCTION);
-                                                                                                                                                     exp.fermeBloc(tab);
+                                                                                                                                                                                exp.fermeBloc(tab);dec.paramType.clear();
   }
 
   static final public void paramForms() throws ParseException {
@@ -119,8 +121,9 @@ public class Yaka implements YakaConstants {
   }
 
   static final public void argumentsFonction() throws ParseException {
+ exp.nomFonctions.push(YakaTokenManager.identLu);exp.reserveRetour();
     jj_consume_token(40);
-    exp.call(tab,exp.nomFonction);
+                                                                           exp.pileType.pop();
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case VRAI:
     case FAUX:
@@ -149,6 +152,7 @@ public class Yaka implements YakaConstants {
       ;
     }
     jj_consume_token(42);
+                                                                                                                                     exp.call(tab,exp.nomFonctions.pop());
   }
 
 /*
@@ -179,7 +183,7 @@ public class Yaka implements YakaConstants {
       }
       declVar();
     }
-  exp.ouvrePrinc();
+  exp.ouvreBloc();
     suiteInstr();
   }
 
@@ -541,7 +545,6 @@ public class Yaka implements YakaConstants {
       jj_consume_token(ident);
                 exp.empileType(tab.chercheIdent(YakaTokenManager.identLu).getTypeToChar());
                         exp.ecrireIdent(tab.chercheIdent(YakaTokenManager.identLu));
-                        exp.nomFonction=YakaTokenManager.identLu;
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
       case 40:
         argumentsFonction();

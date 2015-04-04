@@ -10,6 +10,7 @@ public class IdFonct extends Ident implements Constante{
     	super(type);
     	this.resultat = res;
     	this.parametres = param;
+    	System.out.println(res+param.toString());
     }
 
     public boolean equals(Ident id){
